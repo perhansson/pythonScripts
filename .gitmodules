@@ -1,0 +1,3 @@
+[submodule "pythonutils"]
+	path = pythonutils
+	url = https://github.com/perhansson/pythonutils.git
