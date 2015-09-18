@@ -100,11 +100,32 @@ def noise(files):
 
     return
 
+def getRunNr(name):
+    m = re.match('hps_00(\d+)\..*\.output',name)
+    if m == None:
+        print 'cannot find run nr from ', name
+        sys.exit(1)
+    else:
+        return int(m.group(1))
+
+class Stat:
+    def __init__(self,run):
+        self.run = run
+        self.n = 0
+        self.nOff = 0
+        self.evStartOff = 0
+        self.evStart = 0
+    def toString(self):
+        return 'Run ' + str(self.run) + ' Events ' + str(self.n) + ' EventsOff ' + str(self.nOff) + ' firstEvent ' + str(self.evStart) + ' firstEventHvOff ' + str(self.evStartOff)
+    
+
+        
 
 def stats(files):
     if files==None:
         print 'no output files to process'
         return
+    statlist = []
     for filename in files:
         f = None
         try:
@@ -112,16 +133,32 @@ def stats(files):
         except IOError:
             print "couldnt open file ", filename
             return 1
+        stat = Stat(getRunNr(os.path.basename(filename)))
+        firstEvent = -1
+        firstEventHvOff = -1
         for line in f.readlines():
             #print line
+            m = re.search('.*Event\s(\d+)\swith sequence.*',line)
+            if m!=None:
+                if firstEvent<0:
+                    firstEvent = int(m.group(1))
+            m = re.search('.*Event\s(\d+)\s.*hvOn NO',line)
+            if m!=None:
+                if firstEventHvOff<0:
+                    firstEventHvOff = int(m.group(1))
             m = re.search('.*eventCount\s(\d+)\seventCountHvOff\s(\d+)',line)
             if m!=None:
-                print filename
-                print line
+                #print filename
+                #print line
                 #print m.groups()
-                n = m.group(1)
-                nOff = m.group(2)
-                print 'N=', n , ' nOff=', nOff
+                n = int(m.group(1))
+                nOff = int(m.group(2))
+                #print 'N=', n , ' nOff=', nOff
+                stat.n = n
+                stat.nOff = nOff
+        stat.evStart = firstEvent
+        stat.evStartOff = firstEventHvOff
+        print stat.toString()
         f.close()
 
 def main(args):
