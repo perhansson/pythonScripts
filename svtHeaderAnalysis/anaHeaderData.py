@@ -38,7 +38,7 @@ def printSummaries(summaries):
             if s.run not in runsAll:
                 runsAll.append(s.run)
         
-        print 'nAll: ', nAll, ' eAll', eAll, ' over ', len(runsAll), ' runs'
+        print error, ': nAll ', nAll, ' eAll', eAll, ' over ', len(runsAll), ' runs'
         #print 'run ' + str(self.run)
         #print '%5s %20s %20s %20s %20s' % ('ROC',rceHistNames[0],rceHistNames[1], rceHistNames[2], rceHistNames[3])
         #for roc in self.getRocIds():
@@ -77,16 +77,26 @@ def getRun(name):
     return -1
 
 
+def check(h):
+    print 'check ', h.GetName()
+    n = h.GetEntries()
+    i = h.Integral()
+    if i != n:
+        print 'this histo has OUflow? ', h.GetName()
+        sys.exit(1)
+
 def getRceHists(tFile):
     histos = []
     for hName in rceHistNames:
         if debug: print 'getting ' + hName
         h = tFile.Get(hName)
         if h != None:
+            check(h)
             histos.append(h)
         else:
             print 'couldnt get histo \"' + hName + '\"'
-            sys.exit(1)
+            return None
+            #sys.exit(1)
     return histos
 
 def analyze(results):
@@ -171,11 +181,15 @@ if __name__ == '__main__':
         
         tf = TFile(f)
         rceHists = getRceHists(tf)
-        print 'Got ', len(rceHists), ' RCE histograms'
-        rceResult = RceResult(run,rceHists)
-        rceResults.append(rceResult)
-        tfiles.append(tf)
-
+        if rceHists == None:
+            print 'WARNING: couldnt get histograms for tfile \"', f, '\"'
+            tf.Close()
+        else:
+            print 'Got ', len(rceHists), ' RCE histograms for tfile \"', f, '\"'
+            rceResult = RceResult(run,rceHists)
+            rceResults.append(rceResult)
+            tfiles.append(tf)
+    
     
     summaries = []
     for res in rceResults:
@@ -186,7 +200,7 @@ if __name__ == '__main__':
                     if res.run == s.run and roc == s.roc and s.name == rceHistNames[iError]:
                         summary = s
                 if summary == None:
-                    print 'didn\'t find summary for run ', res.run, ' roc ', roc
+                    if debug: print 'didn\'t find summary for run ', res.run, ' roc ', roc
                     summary = RceSummary(res.run, roc, rceHistNames[iError])
                     summaries.append(summary)
                 summary.e += val[0]
