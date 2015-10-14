@@ -21,7 +21,7 @@ def getHistogram(name):
     hsum = None
     for tfile in tFiles:
         h = tfile.Get(name)
-        print f,': h ', h.GetEntries()
+        print f,': h ', h.GetName(), ' entries ', h.GetEntries()
         if hsum == None:
             hsum = h
         else:
