@@ -97,9 +97,17 @@ class LogFile(object):
         return s + '\n'
 
 def getRun(name):
-    m = re.match('hps_00(\d*)\..*',name)
+    m = re.match('.*/?hps_00(\d*)\..*',name)
     if m != None:
         return int(m.group(1))
+    else:
+        print 'cannot get run number from ', name
+        sys.exit(1)
+
+def getFileId(name):
+    m = re.match('.*/?hps_00(\d*)\.evio\.(\d+)\..*',name)
+    if m != None:
+        return int(m.group(2))
     else:
         print 'cannot get run number from ', name
         sys.exit(1)
