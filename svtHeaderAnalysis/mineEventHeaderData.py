@@ -169,8 +169,6 @@ def analyze():
     
     print 'Found total of ', len(types), ' errors among the runs'
 
-    if 1==1:
-        return
     
     print 'Information on each error'
     for t in types:
@@ -180,31 +178,35 @@ def analyze():
         febs = {}
         n = 0
         for run in runs:
-
             
-            errors = runlogs.getErrors(run)
+            summaries = runlogs.getErrors(run)
 
-            if args.debug: print 'run ', run, ' has ', len(errors), ' error summaries'
+            if args.debug: print 'run ', run, ' has ', len(summaries), ' error summaries'
 
-            for e in errors:
+            for summary in summaries.errorsummaries:
 
-                if args.debug: print 'check error summary ', e.type
+                if args.debug: print 'check error summary ', summary.type
 
-                if e.type == t:
-                    if args.debug: print 'process error summary ', e.type, ' with ', len(e.loc), ' errors'
+                # only process a specific error type
+                if summary.type == t:
+                    if args.debug: print 'process error summary ', summary.type, ' with ', len(summary.records), ' records'
 
+                    # keep track of the runs that had this error
                     if not run in runlist: runlist.append(run)
 
-                    for apv in e.loc:
+                    # keep track of where the error happened
+                    for rec in summary.records:
+                        # count total occurance
                         n += 1
-                        if not apv.roc in rocs:
-                            rocs[apv.roc] = []
-                        if not apv.feb in rocs[apv.roc]: rocs[apv.roc].append(apv.feb)
+                        
+                        # list of rocs/febs
+                        if not rec.roc in rocs:  rocs[rec.roc] = []
+                        if not rec.feb in rocs[rec.roc]: rocs[rec.roc].append(rec.feb)
 
-                        if not apv.feb in febs:
-                            febs[apv.feb] = []
-                        if not apv.hybrid in febs[apv.feb]: febs[apv.feb].append(apv.hybrid)
-                    
+                        # list of febs/hybrids
+                        if not rec.feb in febs:  febs[rec.feb] = []
+                        if not rec.hybrid in febs[rec.feb]: febs[rec.feb].append(rec.hybrid)
+        
         print 'Total #     ', n
         print 'runs        ', runlist
         print 'rocs:febs   ', rocs
