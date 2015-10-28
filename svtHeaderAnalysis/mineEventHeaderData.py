@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import os, argparse, re, subprocess
+import os, argparse, re, subprocess, sys
 from mineHeaderDataLogs import getRun, getFileId
 
 debug = False
@@ -30,9 +30,12 @@ class RunLogs:
         for runlog in self.runlogs: r.append(runlog.run)
         return r
     def getErrors(self,run):
+        errors = []
         for log in self.runlogs:
-            if log.run == run: return log.errors
-        return None
+            if log.run == run:
+                errors = log.errors
+                break
+        return errors
     def getNevents(self,run):
         n = 0
         for runlog in self.runlogs:
@@ -116,43 +119,66 @@ def analyze():
 
 
     # process errors
-    if args.checkerrors:
-        for runlog in runlogs.runlogs:
-            runlog.errors = analyzeLogFileErrors(runlog)
+    if not args.checkerrors:
+        return
+    
+    for runlog in runlogs.runlogs:
+        if args.debug: print 'analyze errors for run ', runlog.run
+        runlog.errors = analyzeLogFileErrors(runlog)
 
+
+    # types of errors
+    types = [] 
+
+    
     print 'Error statistics for ', len(runlogs.runlogs), ' run logs:'
-    runs = runlogs.getRuns()
     print '%5s %8s %11s %8s %20s %20s' % ('run','Nevents','NbadEvents','Nerrors','ROC w/ errors','Errortypes/counts')
+    runs = runlogs.getRuns()
     for run in runs:
-        errors = runlogs.getErrors(run)
-        nerrors = 0
-        rocs = []
-        str_types = ''
-        for es in errors:
-            str_types += es.type + '/' + str(len(es.loc)) + ','
-            nerrors += len(es.loc)
-            for apv in es.loc:
-                if apv.roc not in rocs: rocs.append(apv.roc)
+
+        # get summaries for this run
+        summaries = runlogs.getErrors(run)
+
+        # make sure they exist
+        if summaries == None:
+            print 'what?'
+            sys.exit(1)
+
+        # check stat
+        ntoterrors = 0 # total errors
+        rocs = [] # rocs with errors 
+        str_types = '' # list of type of errors
+        for s in summaries.errorsummaries:
+            nerrors = 0 # errors for this type of error
+            for rec,n in s.records.iteritems():
+                if not rec.roc in rocs:
+                    rocs.append(rec.roc)
+                nerrors += n
+            str_types += s.type + '/' + str(nerrors) + ','
+            ntoterrors += nerrors
+            if not s.type in types: types.append(s.type)
+        
+        # build list of rocs into a string
         str_rocs = ''
         for roc in rocs: str_rocs += str(roc) + ','
-        
-        print '%5d %8d %11d %8d %20s %20s' % (run,runlogs.getNevents(run),runlogs.getNbad(run),nerrors,str_rocs,str_types)
 
+        # print table
+        print '%5d %8d %11d %8d %20s %20s' % (run,runlogs.getNevents(run),runlogs.getNbad(run),ntoterrors,str_rocs,str_types)
 
-    types = []
-    for run in runs:
-        errors = runlogs.getErrors(run)
-        for e in errors:
-            if not e.type in types: types.append(e.type)
-
+    
+    
     print 'Found total of ', len(types), ' errors among the runs'
 
+    if 1==1:
+        return
+    
     print 'Information on each error'
     for t in types:
         print '--> ', t, ' <--'
         runlist = []
         rocs = {}
         febs = {}
+        n = 0
         for run in runs:
 
             
@@ -169,14 +195,17 @@ def analyze():
 
                     if not run in runlist: runlist.append(run)
 
-                    if not e.roc in rocs:
-                        rocs[e.roc] = []
-                    if not e.feb in rocs[e.roc]: rocs[e.roc].append(e.feb)
+                    for apv in e.loc:
+                        n += 1
+                        if not apv.roc in rocs:
+                            rocs[apv.roc] = []
+                        if not apv.feb in rocs[apv.roc]: rocs[apv.roc].append(apv.feb)
 
-                    if not e.feb in febs:
-                        febs[e.feb] = []
-                    if not e.hybrid in febs[e.feb]: febs[e.feb].append(e.hybrid)
-        
+                        if not apv.feb in febs:
+                            febs[apv.feb] = []
+                        if not apv.hybrid in febs[apv.feb]: febs[apv.feb].append(apv.hybrid)
+                    
+        print 'Total #     ', n
         print 'runs        ', runlist
         print 'rocs:febs   ', rocs
         print 'feb:hybrids ', febs
@@ -184,19 +213,63 @@ def analyze():
 
             
 
-class Apv:
+class ErrorRecord:
     def __init__(self,roc,feb,hybrid,apv):
         self.roc = roc
         self.feb = feb
         self.hybrid = hybrid
         self.apv = apv
 
-class ErrSum:
+    def __hash__(self):
+        return 0
+
+    def __eq__(self, other):
+        if self.roc == other.roc and self.feb == other.feb and self.hybrid == other.hybrid and self.apv == other.apv:
+            return True
+        else:
+            return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+
+
+class ErrorSummary:
     def __init__(self,t):
         self.type = t
-        self.loc = []
-    def add(self,roc,feb,hybrid,apv):
-        self.loc.append(Apv(roc,feb,hybrid,apv))
+        self.records = {}
+
+    def addRecord(self,roc,feb,hybrid,apv):
+        r = ErrorRecord(roc,feb,hybrid,apv)
+        self.add(r)
+    
+    def hasRecord(self, record):
+        for r in self.records.keys():
+            if r == record:
+                return True
+        return False
+    
+    def add(self,record):
+        if not self.hasRecord(record):
+            self.records[record] = 0
+        else:
+            self.records[record] += 1
+
+            
+class ErrorSummaries:
+    def __init__(self):
+        self.errorsummaries = []
+    def has(self,errortype):
+        for es in self.errorsummaries:
+            if es.type == errortype:
+                return es
+        return None
+    def add(self,errsum):
+        if self.has(errsum.type):
+            print 'ERROR: trying to add summary that already exists'
+            sys.exit(1)
+        self.errorsummaries.append(errsum)
+        
 
             
     
@@ -240,29 +313,42 @@ def analyzeLogFile(filename):
 
         
 
+
+
 def analyzeLogFileErrors(runlog):
 
     if args.debug: print 'Get log file errors for  ', len(runlog.logs), ' log files in run ', runlog.run
 
+    summaries = ErrorSummaries()
+
+    # exist if no bad events are found
     nbad = 0
-    for log in runlog.logs: nbad += log.Nbad
+    for log in runlog.logs:
+        nbad += log.Nbad
     if nbad== 0:
         if args.debug: print ' no errors found'
-        return
+        return summaries
+
     if args.debug: print ' found ', nbad, ' errors'
 
-    #errors = []
-    error_summaries = []
+    # loop over all runs and build summaries
     for log in runlog.logs:
+        count = 0
+        print 'build summary for log file in run ', runlog.run
         filename = log.filepath
 
         with open(filename,'r') as f:
             for lineraw in f:
+                if count%10000==0: print 'processed ', count, 'lines'
+                count+=1
                 # match this line
                 line = lineraw.rstrip()
                 #SvtHeaderAnalysisDriver INFO: Run 5579 event 41403468 Exception type SvtEvioHeaderApvFrameCountException for roc 57 feb 4 hybrid
                 m = re.match('SvtHeaderAnalysisDriver\s.*Run\s(\d+)\sevent\s(\d+)\sException type\s(\S+)\s.*roc\s(\d+)\sfeb\s(\d+)\shybrid\s(\d+)\sapv\s(\d+).*',line)
                 if m != None:
+
+                    if args.debug: print ' matched line \"', line,'\"'
+                    
                     run = int(m.group(1))
                     event = int(m.group(2))
                     errortype = m.group(3)
@@ -270,21 +356,26 @@ def analyzeLogFileErrors(runlog):
                     feb = int(m.group(5))
                     hybrid = int(m.group(6))
                     apv = int(m.group(7))
-                    error = DaqError(run,event,errortype,roc,feb,hybrid,apv)
-                    #errors.append(error)
-                    summary = None
-                    for es in error_summaries:
-                        if es.type == errortype:
-                            summary = es
-                    if summary == None:                     
-                        summary = ErrSum(errortype)
-                        error_summaries.append(summary)
-                    summary.add(roc,feb,hybrid,apv)
+                    #error = DaqError(run,event,errortype,roc,feb,hybrid,apv)
+
+                    #find the summary for this type
+                    summary = summaries.has(errortype)
+                    if summary == None:
+                        # not there, create it
+                        if args.debug: print ' create new summary for type ', errortype
+                        summary = ErrorSummary(errortype)
+                        # add it to the list of summaries
+                        summaries.add( summary ) 
+                    
+                    # got the summary, add the record to it
+                    if args.debug: print ' add new record for type ', errortype
+                    summary.addRecord(roc,feb,hybrid,apv)
+                    if args.debug: print len(summary.records) , ' records in the summary right now'
     
     #if args.debug:
     #print 'found ', len(errors), ' errors from run ', runlog.run
-    print 'found ', len(error_summaries), ' error summaries from run ', runlog.run
-    return error_summaries
+    print 'found ', len(summaries.errorsummaries), ' error summaries built from run ', runlog.run
+    return summaries
 
 
 
