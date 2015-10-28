@@ -1,4 +1,16 @@
-import os, re, subprocess
+import os, re, subprocess, argparse
+
+parser = argparse.ArgumentParser()
+#parser.add_argument('d', required=True,help='File directory.')
+parser.add_argument('-e', action='store_true',help='Show only runs with errors')
+parser.add_argument('-n', action='store_true',help='Show only runs with no result')
+args = parser.parse_args()
+print args
+
+
+
+
+
 
 
 def gettailfilepath(filepath):
@@ -15,11 +27,12 @@ def gettailfilepath(filepath):
 
 
 class Log:
-    def __init(self):
+    def __init__(self):
         self.run = -1
         self.logfile = None
         self.eviofile = None
         self.nevents = -1
+        self.nbadevents = -1
     
     def processTail(self):
         # find the end of run
@@ -29,15 +42,18 @@ class Log:
         f = open(filepath,'r')
         if f == None:
             self.nevents = -2
+            self.nbadevents = -2
         else:
             n = -3
+            nb = -3
             for line in f.readlines():
                 l = line.rsplit('\n')[0]
                 m = re.match('.*nEventsProcessed\s(\d+).*',l)
-                #print 'match \"', l , '\"'
-                if m != None:
-                    n = int(m.group(1))
+                if m != None: n = int(m.group(1))
+                m = re.match('.*nEventsProcessedHeaderBad\s(\d+).*',l)
+                if m != None: nb = int(m.group(1))
             self.nevents = n
+            self.nbadevents = nb
         f.close()
 
 
@@ -55,9 +71,8 @@ class Logs:
 
 
 # find expected list of files
-
 filedir = '/nfs/slac/g/hps3/users/phansson/data/engrun/evio/LastFilePerRun'
-logdir = '/nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/'
+logdir = '/nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data'
 
 print 'File dir \"', filedir,'\"'
 
@@ -77,7 +92,7 @@ for f in filelist:
         run = int(m.group(1))
         logfile = None
         for lf in os.listdir(logdir):
-            lm = re.match('hps.*00' +str(run)+'\.evio\.(\d+).*headerAnaLast',os.path.basename(lf))
+            lm = re.match('hps.*00' +str(run)+'\.evio\.(\d+).*',os.path.basename(lf))
             if lm != None:
                 #print 'matched log ', lf, ' run ', run
                 # find the text file itself
@@ -90,12 +105,14 @@ for f in filelist:
         log.run = run
         log.eviofile = f
         log.logfile = logfile
-        log.nevents = -1
         logs.add(log)
 
 print 'Found ', len(logs.logs), ' runs'
 
-print '%5s %6s %15s %15s %s' % ('run','Nevents','eviofilesize','logfilesize','logfile')
+logs.logs.sort(key=lambda x:x.run)
+
+
+print '%5s %10s %10s %15s %15s %s' % ('run','Nevents','Nbadevents','eviofilesize','logfilesize','logfile')
 for log in logs.logs:
 
     if log.eviofile == None: evioS = 'None'
@@ -109,7 +126,13 @@ for log in logs.logs:
         logF = log.logfile
 
     log.processTail()
-    print '%5d %6d %15s %15s %s' % (log.run,log.nevents,evioS,logS,logF)
+
+    if args.e and log.nbadevents<=0:
+        continue
+    if args.n and log.nevents>=0:
+        continue
+    
+    print '%5d %10d %10d %15s %15s %s' % (log.run,log.nevents,log.nbadevents,evioS,logS,logF)
     
 
 
