@@ -84,20 +84,37 @@ class DaqError:
 
 
 
+
 def analyze():
 
+    
+    filenames = []
+    if args.directory != None:
+        for root, dirs, files in os.walk(args.directory, topdown=False):
+            for name in files:
+                filename = os.path.join(root, name)
+                if args.r != None:
+                    if re.match(args.r,os.path.basename(filename)) == None:
+                        if args.debug: print 'no match ' , filename
+                        continue
+                filenames.append( filename )
+
+    if args.inputfile != None:
+        filenames.append( args.inputfile )
+
+    print 'Got ', len(filenames), ' filenames'
+    if args.test:
+        for filename in filenames:
+            print filename
+    else:
+        analyzeFiles(filenames)
+
+
+def analyzeFiles(filenames):
+
     logs = []
-    for root, dirs, files in os.walk(args.directory, topdown=False):
-        for name in files:
-            filename = os.path.join(root, name)
-            if args.r != None:
-                if re.match(args.r,os.path.basename(filename)) == None:
-                    if args.debug: print 'no match ' , filename
-                    continue
-            if args.test: print filename
-            else: logs.append( analyzeLogFile(filename) )
-        #for name in dirs:
-        #    print(os.path.join(root, name))
+    for filename in filenames:
+        logs.append( analyzeLogFile(filename) )
 
     print 'Got  ', len(logs), ' log files'
 
@@ -111,6 +128,7 @@ def analyze():
 
     print 'Statistics for ', len(runlogs.runlogs), ' run logs:'
     runs = runlogs.getRuns()
+    runs.sort()
     print '%5s %8s %11s %s' % ('run','Nevents','NbadEvents','filepaths')
     for run in runs:
         paths = ''
@@ -386,7 +404,8 @@ if __name__ == '__main__':
 
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d','--directory', required=True ,help='Directory to scan for log files')
+    parser.add_argument('-d','--directory', help='Directory to scan for log files')
+    parser.add_argument('-i','--inputfile', help='Input file')
     parser.add_argument('-r',required=False ,help='regexp in log file name')
     parser.add_argument('--debug', action='store_true',help='debug')
     parser.add_argument('--test', action='store_true',help='only test')
