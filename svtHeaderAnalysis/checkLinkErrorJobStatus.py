@@ -189,6 +189,7 @@ logs.logs.sort(key=lambda x:x.run)
 runschecked = []
 runslocked = []
 runserr = []
+runserractive = []
 runsgood = []
 
 print '%5s %10s %10s %15s %15s %s' % ('run','Nevents','Nbadevents','eviofilesize','logfilesize','logfile')
@@ -214,19 +215,34 @@ for log in logs.logs:
 
         # list runs with error on all events
         if log.nevents == log.nbadevents:
-            # these should have a locked error
-            #if not log.syncError and not log.readError and not log.countError:
-            #    print 'why did it lock up?: ', log.logfile
-            #    sys.exit(1)
+
+            log.locked = True
+
             runslocked.append(log)
+
         elif log.nbadevents > 0:
-            # list of all runs with any error but not on all events
-            runserr.append(log)
-            #if l == log:
-            #    runserr[log.run][0] += log.nevents
-            #    runserr[log.run][1] += log.nbadevents
-            #    #if log.syncError or log.readError or log.countError:
-            #    #    loglocked.append(log)
+
+            # Check if it locked in during this log file
+            locked = False
+
+            # 1. If there is a SvtHeaderSyncError it definitely did
+            for error in log.errors:
+                if 'SvtEvioHeaderSyncErrorException' in error.name: locked = True
+
+            # 2. add check for error on last few events
+            # not implemented yet
+
+            # set the flag
+            log.locked = locked
+
+            # list of all runs that locked during this log
+            if log.locked:
+                runserractive.append(log)
+            # list of all runs with error but not locked
+            else:
+                runserr.append(log)
+
+            
         else:
             # list all that are ok
             runsgood.append(log)
@@ -242,16 +258,16 @@ for log in logs.logs:
     
 
 print '--> Summary <--'
-print 'Runs with results               : ', len(runschecked)
-print 'Runs without any errors         : ', len(runsgood)
-print 'Runs w/ error but not locked up : ', len(runserr)
-print 'Runs locked up                  : ', len(runslocked)
+print 'Run log with results                    : ', len(runschecked)
+print 'Run log without any errors              : ', len(runsgood)
+print 'Run log w/ errors on fraction of events : ', len(runserr)
+print 'Run log w/ error on every event         : ', len(runslocked)
 
 
 
 print '\n--> More details on each category <--'
 
-print '\nRuns w/ no error: ', len(runsgood)
+print '\nRun logs w/ no error: ', len(runsgood)
 print '%5s %10s' % ('run','nEvents')
 countsTot = [0,0]
 for log in runsgood:
@@ -262,7 +278,7 @@ for log in runsgood:
 print '%5s %10d ' % ('Total',countsTot[0])
 
 
-print '\nRuns w/ error but not locked up : ', len(runserr)
+print '\nRun logs w/ error on at least one but not all events (not locked) : ', len(runserr)
 print '%5s %10s %10s %10s %10s' % ('run','nEvents','nBadEvents','fractionBad','Errors')
 countsTot = [0,0]
 for log in runserr:
@@ -278,7 +294,9 @@ fracTot = -1.0
 if countsTot[0] != 0: fracTot = float(countsTot[1])/countsTot[0]
 print '%5s %10d %10d %10f' % ('Total',countsTot[0],countsTot[1],fracTot)
 
-print '\nRuns that where locked up: ', len(runslocked)
+
+
+print '\nRun logs w/ error on all events: ', len(runslocked)
 print '%5s %10s %10s %10s %30s' % ('run','nEvents','nBadEvents','evioFileId','ErrorName/roc:count')
 for log in runslocked:
     # find evio file nr for this case
@@ -290,7 +308,7 @@ for log in runslocked:
         error_names += error.name + '/' + str(error.rocs) + ','
     print '%5d %10d %10d %10d %30s' % (log.run,log.nevents,log.nbadevents,i,error_names)
 
-print '\nRuns that needs to be further processed: ', len(runslocked)
+print '\nRuns to stage more files to find lock point: ', len(runslocked)
 print '%5s %10s %s' % ('run','evioFileId','logfile')
 for log in runslocked:
     # find evio file nr for this case
@@ -301,7 +319,22 @@ for log in runslocked:
 
 
 
-    
+print '\nRun logs w/ lock happening during this log: ', len(runserractive)
+print '%5s %10s %10s %10s %10s' % ('run','nEvents','nBadEvents','fractionBad','Errors')
+countsTot = [0,0]
+for log in runserractive:
+    counts = [log.nevents, log.nbadevents]
+    frac = -1.0
+    if counts[0] != 0: frac = float(counts[1])/counts[0]
+    error_names = ''
+    for error in log.errors: error_names += error.name + ','
+    print '%5d %10d %10d %10f %10s' % (log.run,counts[0],counts[1],frac,error_names)
+    countsTot[0] += counts[0]
+    countsTot[1] += counts[1]
+fracTot = -1.0
+if countsTot[0] != 0: fracTot = float(countsTot[1])/countsTot[0]
+print '%5s %10d %10d %10f' % ('Total',countsTot[0],countsTot[1],fracTot)
+
 
 
 
