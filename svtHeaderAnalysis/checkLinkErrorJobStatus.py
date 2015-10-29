@@ -249,9 +249,20 @@ print 'Runs locked up                  : ', len(runslocked)
 
 
 
-print '\nMore details on each category\n'
+print '\n--> More details on each category <--'
 
-print 'Runs w/ error but not locked up : ', len(runserr)
+print '\nRuns w/ no error: ', len(runsgood)
+print '%5s %10s' % ('run','nEvents')
+countsTot = [0,0]
+for log in runsgood:
+    counts = [log.nevents, log.nbadevents]
+    print '%5d %10d ' % (log.run,counts[0])
+    countsTot[0] += counts[0]
+    countsTot[1] += counts[1]
+print '%5s %10d ' % ('Total',countsTot[0])
+
+
+print '\nRuns w/ error but not locked up : ', len(runserr)
 print '%5s %10s %10s %10s %10s' % ('run','nEvents','nBadEvents','fractionBad','Errors')
 countsTot = [0,0]
 for log in runserr:
@@ -267,7 +278,7 @@ fracTot = -1.0
 if countsTot[0] != 0: fracTot = float(countsTot[1])/countsTot[0]
 print '%5s %10d %10d %10f' % ('Total',countsTot[0],countsTot[1],fracTot)
 
-print '\nRuns that where locked up:'
+print '\nRuns that where locked up: ', len(runslocked)
 print '%5s %10s %10s %10s %30s' % ('run','nEvents','nBadEvents','evioFileId','ErrorName/roc:count')
 for log in runslocked:
     # find evio file nr for this case
@@ -279,7 +290,7 @@ for log in runslocked:
         error_names += error.name + '/' + str(error.rocs) + ','
     print '%5d %10d %10d %10d %30s' % (log.run,log.nevents,log.nbadevents,i,error_names)
 
-print '\nRuns that needs to be further processed:'
+print '\nRuns that needs to be further processed: ', len(runslocked)
 print '%5s %10s %s' % ('run','evioFileId','logfile')
 for log in runslocked:
     # find evio file nr for this case
