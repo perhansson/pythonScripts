@@ -1,4 +1,4 @@
-import os, re, subprocess, argparse
+import os, re, subprocess, argparse, sys
 
 parser = argparse.ArgumentParser()
 #parser.add_argument('d', required=True,help='File directory.')
@@ -33,6 +33,9 @@ class Log:
         self.eviofile = None
         self.nevents = -1
         self.nbadevents = -1
+        self.syncError = False
+        self.readError = False
+        self.countError = False
     
     def processTail(self):
         # find the end of run
@@ -52,6 +55,12 @@ class Log:
                 if m != None: n = int(m.group(1))
                 m = re.match('.*nEventsProcessedHeaderBad\s(\d+).*',l)
                 if m != None: nb = int(m.group(1))
+                m = re.match('.*SyncError.*',l)
+                if m != None: log.syncError = True
+                m = re.match('.*SvtEvioHeaderApvReadErrorException.*',l)
+                if m != None: log.readError = True
+                m = re.match('.*SvtEvioHeaderApvFrameCountException.*',l)
+                if m != None: log.countError = True
             self.nevents = n
             self.nbadevents = nb
         f.close()
@@ -85,6 +94,7 @@ print 'Found ', len(filelist), ' files/runs:'
 
 logs = Logs()
 
+
 for f in filelist:
     m = re.match('hps.*00(\d+)\.evio\.(\d+)',os.path.basename(f))
     if m != None:
@@ -111,6 +121,10 @@ print 'Found ', len(logs.logs), ' runs'
 
 logs.logs.sort(key=lambda x:x.run)
 
+nruns = 0
+runserr = {}
+runserrall = {}
+loglocked = []
 
 print '%5s %10s %10s %15s %15s %s' % ('run','Nevents','Nbadevents','eviofilesize','logfilesize','logfile')
 for log in logs.logs:
@@ -127,45 +141,75 @@ for log in logs.logs:
 
     log.processTail()
 
+    # pick out logs and count
+    # only do it for those that had some events
+    if log.nevents > 0:
+        nruns += 1
+        # list runs with error on all events
+        if log.nevents == log.nbadevents:
+            # these should have a locked error
+            if not log.syncError and not log.readError and not log.countError:
+                print 'why did it lock up?: ', log.logfile
+                sys.exit(1)
+            # find evio file nr for this case
+            i = -1
+            m = re.match('.*hps_00\d+\.evio\.(\d+).*',os.path.basename(log.logfile))
+            if m != None: i = int( m.group(1) ) 
+            runserrall[log.run] = i
+        else:
+            # list of all runs with any error 
+            if log.nbadevents > 0:
+                if not log.run in runserr: runserr[log.run] = [0,0]
+                runserr[log.run][0] += log.nevents
+                runserr[log.run][1] += log.nbadevents
+                #if log.syncError or log.readError or log.countError:
+                #    loglocked.append(log)
+            
+            
     if args.e and log.nbadevents<=0:
         continue
     if args.n and log.nevents>=0:
         continue
+
+    
     
     print '%5d %10d %10d %15s %15s %s' % (log.run,log.nevents,log.nbadevents,evioS,logS,logF)
     
 
+print '--> Summary <--'
+print 'Runs with results: ', nruns
+print 'Runs with any errors: ', len(runserr)
+print 'Runs with errors on all events (locked up): ', len(runserrall)
 
 
 
-# find the log files for each run
-#loglist = {}
-#for run,eviofile in runlist.iteritems():
-#    log = None
-#    for f in os.listdir(logdir):
-#        m = re.match('hps.*00' +str(run)+'\.evio\.(\d+).*headerAnaLast',os.path#.basename(f))
-#        if m != None:
-#            print 'matched log ', f, ' run ', m.group(1)
-#            # find the text file itself
-#            for ff in os.listdir(os.path.join(logdir,f)):
-#                m = re.match('hps.*00(\d+)\.evio\.(\d+).log.1',os.path.basename(ff))
-#                log = os.path.join(os.path.join(logdir,f),ff)
-#        else:
-#            print ' no log match for ', f
-#    if run in loglist:
-#        loglist[run] = log
-#
-#
-#print 'found ', len(loglist), ' logs:'
-#print '%5s %15s %15s %s' % ('run','logfilesize','eviosize','logfile')
-#for k,v in loglist.iteritems():
-#
-#    if v == None:
-#        print '%5d %15s %15s %s' % (k, 'No log file',', '-')
-#    elif os.path.getsize(v) == None:
-#        print '%5d %15s %s' % (k, 'Empty log file','-')
-#    else:
-#        print '%5d %15d %s' % (k, os.path.getsize(v), v)
+print 'Runs with error on some but not all events and no locking error:'
+countsTot = [0,0]
+for r,counts in runserr.iteritems():
+    if not r in runserrall:
+        frac = -1.0
+        if counts[0] != 0: frac = float(counts[1])/counts[0]
+        print '%5d %10d %10d %10f' % (r,counts[0],counts[1],frac)
+        countsTot[0] += counts[0]
+        countsTot[1] += counts[1]
+fracTot = -1.0
+if countsTot[0] != 0: fracTot = float(countsTot[1])/countsTot[0]
+print '%5s %10d %10d %10f' % ('Total',countsTot[0],countsTot[1],fracTot)
+
+print 'Runs where we locked up and the log file:'
+for log in loglocked:
+    print '%5d %10d %10d %s' % (log.run,log.nevents,log.nbadevents,log.logfile)
+
+
+
+print 'Runs and file with error on all events:'
+for r,i in runserrall.iteritems():
+    print r, ' ', i
+
+    
+
+
+
 
 
 
