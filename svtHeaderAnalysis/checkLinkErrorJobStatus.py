@@ -215,19 +215,35 @@ for log in logs.logs:
 
         # list runs with error on all events
         if log.nevents == log.nbadevents:
-
+            print 'error on all for ', log.run
             log.locked = True
 
-            runslocked.append(log)
+            # if this was the first file of the run it locked during this file (don't catch this below)
+            i = -1
+            m = re.match('.*hps_00\d+\.evio\.(\d+).*',os.path.basename(log.logfile))
+            if m != None: i = int( m.group(1) ) 
+            if i == 0:
+                print 'first file for ', log.run
+                runserractive.append(log)
+            else:
+                print 'NOT first file for ', log.run
+                runslocked.append(log)
 
         elif log.nbadevents > 0:
 
             # Check if it locked in during this log file
             locked = False
 
-            # 1. If there is a SvtHeaderSyncError it definitely did
+            # 1. If there is a SvtHeaderSyncError it locked
+            readErr = False
+            msErr = False
             for error in log.errors:
                 if 'SvtEvioHeaderSyncErrorException' in error.name: locked = True
+                if 'SvtEvioHeaderApvReadErrorException' in error.name: readErr = True
+                if 'SvtEvioHeaderMultisampleErrorBitException' in error.name: msErr = True
+
+            # 1.1 If there is an APV ReadError not caused by inserted frames (MultisampleError) it locked
+            if readErr and not msErr: locked = True
 
             # 2. add check for error on last few events
             # not implemented yet
@@ -257,12 +273,12 @@ for log in logs.logs:
     print '%5d %10d %10d %15s %15s %s' % (log.run,log.nevents,log.nbadevents,evioS,logS,logF)
     
 
-print '--> Summary <--'
+print '\n\n--> Summary <--'
 print 'Run log with results                    : ', len(runschecked)
 print 'Run log without any errors              : ', len(runsgood)
 print 'Run log w/ errors on fraction of events : ', len(runserr)
 print 'Run log w/ error on every event         : ', len(runslocked)
-
+print 'Run log w/ lockup                       : ', len(runserractive)
 
 
 print '\n--> More details on each category <--'
