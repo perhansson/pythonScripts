@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os,sys,argparse,subprocess,re
-from ROOT import TFile, TH2, TGraph2D, TCanvas, gStyle, TF1, TGraphErrors, gPad
+from ROOT import TFile, TH2, TGraph2D, TCanvas, gStyle, TF1, TGraphErrors, gPad, gDirectory
 sys.path.append('../pythonutils')
 import compareRootHists
 import plotutils
@@ -26,7 +26,7 @@ def get_module_names():
     return names
 
 
-def plot_axial_residuals(tFile,hist_name,half,side,maxminlist):
+def plot_residuals(tFile,hist_name,half,side,maxminlist):
     #module_L6b_halfmodule_axial_hole_sensor0_hitresglobal
     #module_L1t_halfmodule_axial_sensor0_hitresglobal
     names = get_module_names()    
@@ -107,6 +107,35 @@ def plot_axial_residuals(tFile,hist_name,half,side,maxminlist):
     ans = raw_input('continue?')
 
 
+
+def plot_projection(t_file, hist_name):
+    h = t_file.Get(hist_name)
+    c = TCanvas('c_extrapol','c_extrapol',10,10,1400,900)
+    c.Divide(1,3)
+    c.cd(1)
+    h.Draw('colz')
+    h.FitSlicesY(0,5,25,10)
+    hM = gDirectory.Get(h.GetName()+'_1')
+    if hM == None:
+        print 'no slice 1 histo found'
+    else:
+        c.cd(2)
+        hM.Draw()
+    hW = gDirectory.Get(h.GetName()+'_2')
+    if hW == None:
+        print 'no slice 2 histo found'
+    else:
+        c.cd(3)
+        hW.Draw()
+        f = TF1('fpol2','pol2',h.GetXaxis().GetBinCenter(6),h.GetXaxis().GetBinCenter(24))
+        hW.Fit(f,'R')
+        min_val = f.GetParameter(1)/(-2.0*f.GetParameter(2))
+        plotutils.myText(0.5,0.5,'min_val=%.0f mm' % min_val,0.07,2)
+        
+    ans = raw_input('continue?')
+    c.Update()
+    c.SaveAs(hist_name.replace(' ','_') + '.png')
+
 if __name__ == '__main__':
     print 'just go'
 
@@ -119,17 +148,20 @@ if __name__ == '__main__':
     debug = args.debug
 
     t_file = TFile(args.file)
-
     
 
-    plot_axial_residuals(t_file,'hitresglobal','t','hole',[0.07,-0.07,0.16,0.0])
-    plot_axial_residuals(t_file,'hitresglobal','b','hole',[0.03,-0.03,0.16,0.0])
+    #plot_residuals(t_file,'hitresglobal','t','hole',[0.07,-0.07,0.16,0.0])
+    #plot_residuals(t_file,'hitresglobal','b','hole',[0.03,-0.03,0.16,0.0])
 
-    plot_axial_residuals(t_file,'stereohitxzresglobal','t','hole',[0.4,-0.4,0.3,0.0])
-    plot_axial_residuals(t_file,'stereohitxzresglobal','b','hole',[0.4,-0.4,0.3,0.0])
+    #plot_residuals(t_file,'stereohitxzresglobal','t','hole',[0.4,-0.4,0.3,0.0])
+    #plot_residuals(t_file,'stereohitxzresglobal','b','hole',[0.4,-0.4,0.3,0.0])
 
-    plot_axial_residuals(t_file,'stereohityzresglobal','t','hole',[0.07,-0.07,0.16,0.0])
-    plot_axial_residuals(t_file,'stereohityzresglobal','b','hole',[0.03,-0.03,0.16,0.0])
+    #plot_residuals(t_file,'stereohityzresglobal','t','hole',[0.07,-0.07,0.16,0.0])
+    #plot_residuals(t_file,'stereohityzresglobal','b','hole',[0.03,-0.03,0.16,0.0])
+
+    #plot_projection(t_file,'Track axial extrapolation')
+    plot_projection(t_file,'Track extrapolation Y')
+    plot_projection(t_file,'Track extrapolation X')
 
     t_file.Close()
 
