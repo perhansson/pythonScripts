@@ -10,26 +10,11 @@ debug = False
 
 
 
-def get_module_names():
-    
-    names = []
-    for l in range(1,7):
-        for h in ['t','b']:
-            for t in ['axial','stereo']:
-                if l < 4:
-                    name = 'module_L' + str(l) + h +'_halfmodule_' + t + '_sensor0'
-                    names.append(name)
-                else:
-                    for s in ['hole','slot']:
-                        name = 'module_L' + str(l) + h +'_halfmodule_' + t + '_' + s + '_sensor0'
-                        names.append(name)
-    return names
-
 
 def plot_residuals(tFile,hist_name,half,side,maxminlist):
     #module_L6b_halfmodule_axial_hole_sensor0_hitresglobal
     #module_L1t_halfmodule_axial_sensor0_hitresglobal
-    names = get_module_names()    
+    names = hps_utils.get_module_names()    
     print 'found ', len(names), ' histogram names'
     graphBinNames = []
     graphMean = TGraphErrors()
@@ -140,8 +125,8 @@ if __name__ == '__main__':
     print 'just go'
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--file',required=True,help='Input ROOT files')
-    parser.add_argument('--debug', action='store_true',help='debug')
+    parser.add_argument('--file','-f',required=True,help='Input ROOT files')
+    parser.add_argument('--debug','-d', action='store_true',help='debug')
     args = parser.parse_args()
     print args
 
