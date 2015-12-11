@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os,sys,argparse,subprocess,re
-from ROOT import TFile, TH2, TGraph2D, TCanvas, gStyle, TF1, TGraphErrors, gPad, gDirectory, TLegend
+from ROOT import TFile, TH2, TGraph2D, TCanvas, gStyle, TF1, TGraphErrors, gPad, gDirectory, TLegend, gROOT 
 sys.path.append('../pythonutils')
 import compareRootHists
 import plotutils
@@ -12,14 +12,38 @@ args = None
 def getArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f','--files',nargs='+',required=True,help='Input ROOT files')
+    parser.add_argument('-r','--regexp',help='Reg. exp to further select files.')
     parser.add_argument('-d','--debug', action='store_true',help='debug')
+    parser.add_argument('-b','--batch', action='store_true',help='batch mode')
+    parser.add_argument('--reference', type=int,help='run to be used as reference')
     args = parser.parse_args()
     print args
     return args
 
 
 
+def updateOrder(graphs,reference):
+    print ' use ', reference, ' as reference'
+    g_ref = []
+    ig = 0
+    for g in graphs:
+        print 'i_g ', ig, ' run ', g.run, ' name ', g.name
+        if g.run == reference:
+            g_ref.append( g )
+        ig = ig + 1
+    if not g_ref:
+        print 'Error, no reference run ', reference, ' was found'
+        sys.exit(1)        
+    ig = 0
+    for g in g_ref:
+        graphs.remove(g)
+        graphs.insert(0,g)
+    for g in graphs:        
+        print 'i_g ', ig, ' run ', g.run, ' name ', g.name
+        ig = ig + 1
+    return graphs
 
+    
 def plotGraphs(graphs, name):
 
     print 'plot ', len(graphs)
@@ -27,13 +51,17 @@ def plotGraphs(graphs, name):
     c = TCanvas('c_' + name, 'c_' + name, 10, 10, 1400, 900)
     legend = TLegend(0.75,0.67,0.95,0.88)
     legend.SetFillColor(0)
+    icolor = 0
     for i in range( len(graphs) ):
         gr = graphs[i].graph
         run = graphs[i].run
         print 'plot graph \"', gr.GetName(), '\" for run ', run
 
-        gr.SetMarkerColor(1+i)
-        gr.SetLineColor(1+i)
+        icolor = icolor + 1
+        if icolor == 10 or icolor == 5: icolor = icolor + 1
+        print icolor
+        gr.SetMarkerColor(icolor)
+        gr.SetLineColor(icolor)
         gr.SetMarkerSize(1.)
 
         if( i == 0 ):
@@ -62,6 +90,8 @@ def plotGraphRatios(graphs, name):
     legend.SetFillColor(0)
     grDen = None
     runDen = -1
+    icolor = 0
+    grRatios = []
     for i in range( len(graphs) ):
         gr = graphs[i].graph
         run = graphs[i].run
@@ -75,8 +105,10 @@ def plotGraphRatios(graphs, name):
             grRatio.SetTitle('ratio ' + gr.GetName())
             grRatio.GetXaxis().SetTitle('Channel')
             grRatio.GetYaxis().SetTitle('Ratio')
-            grRatio.SetMarkerColor(1+i)
-            grRatio.SetLineColor(1+i)
+            icolor = i + 1
+            if icolor == 10 or icolor == 5: icolor = icolor + 1
+            grRatio.SetMarkerColor(icolor)
+            grRatio.SetLineColor(icolor)
             grRatio.SetMarkerSize(1.)
             grRatio.SetMarkerStyle(20)
 
@@ -86,6 +118,7 @@ def plotGraphRatios(graphs, name):
                 grRatio.Draw('LP,same')
             
             legend.AddEntry(grRatio,str(run)+'/'+str(runDen),'LP')
+            grRatios.append(grRatio)
 
     legend.Draw()
     saveName = ''
@@ -110,6 +143,8 @@ if __name__ == '__main__':
 
     args = getArgs()
 
+    gROOT.SetBatch(args.batch)
+
     debug = args.debug
 
     graphs = []
@@ -125,7 +160,16 @@ if __name__ == '__main__':
                 module_name = name
                 break
 
+        if args.regexp != None:
+            if debug: print 'apply regexp \"', args.regexp, '\" to file \"', f, '\"'
+            m = re.match(args.regexp, f)
+            if m == None:
+                if debug: print 'no match for regexp \"', args.regexp, '\" for file \"', f, '\"'
+                continue
+        
         print 'module name ', module_name
+
+        
 
         if 'rms' in f:
             graph_name = 'grRMS_' + module_name
@@ -157,19 +201,30 @@ if __name__ == '__main__':
 
     print 'Found ', len(graphs), ' ModuleGraphs in ', len(args.files), ' files'
 
+    if args.reference != None:
+        graphs = updateOrder(graphs, args.reference)
+    
 
-
+    used = []
     for gr in graphs:
-        # find the others and overlay
+
         grs = []
-        runs = []
         grs.append(gr)
         for gr2 in graphs:
             if gr.run == gr2.run:
                 continue
             if gr.name == gr2.name:
-                grs.append(gr2)
-        
+                grs.append(gr2)        
+        ok = True
+        for u in used:
+            for g in grs:
+                if u.run == g.run and u.name == g.name:
+                    ok = False
+                    break
+        if not ok:
+            continue
+        used.extend(grs)
+
         print 'overlay ', len(grs), ' graphs'
         
         plotGraphs(grs, gr.graph.GetName())

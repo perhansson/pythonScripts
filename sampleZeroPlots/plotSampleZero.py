@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os,sys,argparse,subprocess,re
-from ROOT import TFile, TH2, TGraph2D, TCanvas, gStyle, TF1, TGraphErrors, gPad, gDirectory
+from ROOT import TFile, TH2, TGraph2D, TCanvas, gStyle, TF1, TGraphErrors, gPad, gDirectory, gROOT
 sys.path.append('../pythonutils')
 import compareRootHists
 import plotutils
@@ -12,7 +12,9 @@ args = None
 def getArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f','--file',required=True,help='Input ROOT files')
+    parser.add_argument('-r','--regexp',help='Reg. exp to further select files.')
     parser.add_argument('-d','--debug', action='store_true',help='debug')
+    parser.add_argument('-b','--batch', action='store_true',help='batch mode')
     parser.add_argument('--saveall', action='store_true',help='save all histograms')
     args = parser.parse_args()
     print args
@@ -37,6 +39,12 @@ def plot_sensor_hist(tFile,hist_name,half,maxminlist):
             if half != '' and m_half != half:
                 continue
             name = m_name + h_name 
+            if args.regexp != None:
+                if debug: print 'apply regexp \"', args.regexp, '\" to file \"', name, '\"'
+                m = re.match(args.regexp, name)
+                if m == None:
+                    if debug: print 'no match for regexp \"', args.regexp, '\" for  \"', name, '\"'
+                    continue
             print 'Try to find histogram \"', name, '\"'
             h = t_file.Get(name)
             if h == None:
@@ -101,14 +109,22 @@ def plot_sensor_hist(tFile,hist_name,half,maxminlist):
 
 
 def plot_sensor_hist_channel(tFile,run, hist_name, chlist, maxminlist):
-    names = hps_utils.get_module_names()    
-    print 'found ', len(names), ' sensor names'
+    print 'plot_sensor_hist_channel: run ', run, ' name ', hist_name
+    names = hps_utils.get_module_names()
+    debug = False
+    if debug: print 'found ', len(names), ' sensor names'
     for h_name in [hist_name]:
-        print 'Process histogram \"', h_name, '\"'
+        if debug: print 'Process histogram \"', h_name, '\"'
         for m_name in names:
-            print 'Sensor \"', m_name, '\"'
-            name = m_name + h_name 
-            print 'Try to find histogram \"', name, '\"'
+            if debug: print 'Sensor \"', m_name, '\"'
+            name = m_name + h_name
+            if args.regexp != None:
+                if debug: print 'apply regexp \"', args.regexp, '\" to file \"', name, '\"'
+                m = re.match(args.regexp, name)
+                if m == None:
+                    if debug: print 'no match for regexp \"', args.regexp, '\" for  \"', name, '\"'
+                    continue
+            if debug: print 'Try to find histogram \"', name, '\"'
             h = t_file.Get(name)
             if h == None:
                 print 'no histogram name \"', name, '\" found'
@@ -118,10 +134,10 @@ def plot_sensor_hist_channel(tFile,run, hist_name, chlist, maxminlist):
                 graphMean.SetName('grMean_' + m_name)
                 graphRMS = TGraphErrors()
                 graphRMS.SetName('grRMS_' + m_name)
-                print 'got hist \"', h.GetName(), '\"'
+                print 'Process histogram \"', h.GetName(), '\"'
                 c = TCanvas('c_' + name, 'c_' + name,10,10,1400,900)
                 for ch in chlist:
-                    print 'Fit channel ', ch
+                    if debug: print 'Fit channel ', ch
                     c.Clear()
                     b = h.GetXaxis().FindBin(ch)
                     #print 'ch ', ch, ' -> bin ', b
@@ -142,10 +158,10 @@ def plot_sensor_hist_channel(tFile,run, hist_name, chlist, maxminlist):
                         rms = fg.GetParameter(2)
                         rmsError = fg.GetParError(2)
                         if meanError > 10.:
-                            print 'meanError ', meanError, ' large -> skip this channel, '
+                            print 'meanError ', meanError, ' large -> skip this channel, ', ch
                             continue
                         if rmsError > 10.:
-                            print 'rmsError ', rmsError, ' large -> skip this channel, '
+                            print 'rmsError ', rmsError, ' large -> skip this channel, ', ch
                             continue
                         ipoint = graphMean.GetN()
                         graphMean.SetPoint(ipoint, ch, mean)
@@ -154,7 +170,7 @@ def plot_sensor_hist_channel(tFile,run, hist_name, chlist, maxminlist):
                         graphRMS.SetPointError(ipoint, 0., rmsError)
                         #print 'mean ', mean, '+-',meanError,' RMS ', rms, '+-', rmsError, ' fg ', fg.GetName()
                     else:
-                        print 'Not enough entries for histogram \"', name, '\"'
+                        print 'Not enough entries (', hprj.GetEntries() ,') for fit histogram \"', name, '\" channel ', ch
                     hprj.Draw()
                     if args.saveall:
                         c.SaveAs('run_' + str(run) + '_' + name + '_ch' + str(ch) + '.png')
@@ -202,14 +218,14 @@ if __name__ == '__main__':
     print 'just go'
 
     args = getArgs()
-
+    gROOT.SetBatch(args.batch)
     debug = args.debug
 
     t_file = TFile(args.file)    
     #plot_sensor_hist(t_file,' - first sample (MAX_SAMPLE>=4)','t',[])
     #plot_sensor_hist(t_file,' - first sample (MAX_SAMPLE>=4)','b',[])
     
-    channel_list = range(1,640)
+    channel_list = range(512,640)
     run = hps_utils.get_run_from_filename(args.file)
     plot_sensor_hist_channel(t_file, run,' channels - first sample (MAX_SAMPLE>=4)', channel_list, [])
     
