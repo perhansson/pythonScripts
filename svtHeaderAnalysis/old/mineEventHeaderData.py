@@ -1,88 +1,12 @@
 #!/usr/bin/python
-import os, argparse, re, subprocess, sys
-from mineHeaderDataLogs import getRun, getFileId
+import os
+import sys
+import argparse
+import re
+import subprocess
+import svtHeaderUtils
 
 debug = False
-
-def gettailfilepath(filepath):
-    proc = subprocess.Popen('mktemp /tmp/tmp.XXXXX',stdout=subprocess.PIPE,shell=True)
-    f = proc.stdout.read()
-    fp = f.rsplit()[0]
-    cmd = 'tail -n 100 ' + filepath + " > " + fp
-    #print cmd
-    subprocess.call(cmd, shell=True)
-    if not os.path.isfile(fp):
-        print fp , ' is not a file?'
-    return fp
-
-
-class RunLogs:
-    def __init__(self):
-        self.runlogs = []
-    def getRunLog(self, run):
-        for log in self.runlogs:
-            if log.run == run: return log
-        return None
-    def add(self,runlog):
-        self.runlogs.append(runlog)
-    def getRuns(self):
-        r = []
-        for runlog in self.runlogs: r.append(runlog.run)
-        return r
-    def getErrors(self,run):
-        errors = []
-        for log in self.runlogs:
-            if log.run == run:
-                errors = log.errors
-                break
-        return errors
-    def getNevents(self,run):
-        n = 0
-        for runlog in self.runlogs:
-            if runlog.run == run:
-                for log in runlog.logs:
-                    n += log.Nevents
-        return n
-    def getNbad(self,run):
-        n = 0
-        for runlog in self.runlogs:
-            if runlog.run == run:
-                for log in runlog.logs:
-                    n += log.Nbad
-        return n
-
-    
-class RunLog:
-    def __init__(self,run):
-        self.run = run
-        self.logs = []
-        self.errors = []
-    def add(self,log):
-        self.logs.append(log)
-
-class Log:
-    def __init__(self,run,fileId,filepath):
-        self.run = run
-        self.fileId = fileId
-        self.filepath = filepath
-        self.Nevents = -1
-        self.Nbad = -1
-        self.Nheaders = -1
-    def toString(self):
-        return 'run %d fileId %d Nevents %d NBadEvents %d Nheaders %d' % (self.run, self.fileId, self.Nevents, self.Nbad, self.Nheaders)
-
-
-class DaqError:
-    def __init__(self,run,event,errortype,roc,feb,hybrid,apv):
-        self.run = run
-        self.event = event
-        self.errortype = errortype
-        self.roc = roc
-        self.feb = feb
-        self.hybrid = hybrid
-        self.apv = apv
-
-
 
 
 def analyze():
