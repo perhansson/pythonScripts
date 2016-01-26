@@ -1,11 +1,12 @@
 import os, re, subprocess, argparse, sys
-from utils import Logs, Log, LockedLog, HeaderException, getLogs, getEvioFileList, getRunDict
+from utils import Logs, Log, LockedLog, HeaderException, getLogs, getEvioFileList, getRunDict, processEventTimeFile
 from constants import IGNORE_RUNS
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--logdir', nargs='+', required=True, help='Directories of log files')
 parser.add_argument('--eviodir', help='Check and use EVIO files')
+parser.add_argument('--eventtimefile', help='Check that a supplied event time exists for each locked run')
 parser.add_argument('--debug','-d', action='store_true', help='debug flag')
 args = parser.parse_args()
 print args
@@ -13,6 +14,7 @@ print args
 
 # directory where I keep the locked runs evio files
 evioDirLockedFiles = '/nfs/slac/g/hps3/users/phansson/data/engrun/evio/SvtLockedRunFiles'
+#get a list of all the files
 lockedEvioFiles = os.listdir(evioDirLockedFiles)
 
 
@@ -387,13 +389,16 @@ for r in runsAll.keys():
 
 
 
+lockedRunEventTimeMap = None
+if args.eventtimefile != None:
+    lockedRunEventTimeMap = processEventTimeFile(  args.eventtimefile )
 
 filesActiveLockLogFiles = []
 lockedRunEventMap = {}
 
 
 print '\nInformation on lock position for each of the locked runs that we care about'
-print '%5s %5s %10s %35s' % ('run','logNr','Err@Event','Err@Date')
+print '%5s %5s %10s %22s %35s' % ('run','logNr','Err@Event','Err@EventTime','Err@Date')
 for r in runsLocked_keys:
     
     if r in IGNORE_RUNS:
@@ -409,15 +414,26 @@ for r in runsLocked_keys:
             else:
                 if log.filenr < selLog.filenr:
                     selLog = log
-        print '%5d %5d %10s %35s' % (r,selLog.filenr,'?','Earliest log on disk')
+        print '%5d %5d %10s %22s %35s' % (r,selLog.filenr,'?','?','Earliest log on disk')
     else:
         lockedlogs = runsLockedActive[r]
         if len(lockedlogs) != 1:
             print 'there are ', len(lockedlogs), ' locked logs for run ', r, ' !?'
         for llog in lockedlogs:
-            print '%5d %5d %10d %35s' % (llog.log.run,llog.log.filenr,llog.lock.event, llog.lock.dateStr)
+            # check separate event time file, if supplied
+            if args.eventtimefile != None:
+                #print len(lockedRunEventTimeMap), ' runs to check'
+                time = -1
+                if llog.run in lockedRunEventTimeMap:
+                    if lockedRunEventTimeMap[llog.run][0] == llog.lock.event:
+                        time = lockedRunEventTimeMap[llog.run][1]
+                    else:
+                        print 'Event is not the same!?'
+            print '%5d %5d %10d %22d %35s' % (llog.log.run,llog.log.filenr,llog.lock.event, time, llog.lock.dateStr)
             filesActiveLockLogFiles.append(llog.log.logfile)
             lockedRunEventMap[llog.log.run] = llog.lock.event
+            
+
 
 
 fLL = open('locked_files.txt','w')
@@ -432,11 +448,15 @@ fLL.close()
 
 
 
+    
+
+
+
+
 
 
 print '\nFind range of files to download for locked runs that we care about'
 print 'Go through each locked log file and find the previous one that was ok, if any'
-evioFileDir = '/nfs/slac/g/hps3/users/phansson/data/engrun/evio/SvtLockedRunFiles'
 logsLockedToPrev = {}
 logsLockedAllPrev = {}
 logsLockedAllPrevRes = {}
@@ -573,7 +593,6 @@ if 1==1:
 
 
 print '\nNew files to download for runs we care about and had no info'
-evioFileDir = '/nfs/slac/g/hps3/users/phansson/data/engrun/evio/SvtLockedRunFiles'
 runlist = []
 for r in runsWithoutResultCare.keys():
     print 'Run ', r
