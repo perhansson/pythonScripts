@@ -388,6 +388,8 @@ for r in runsAll.keys():
 
 
 
+filesActiveLockLogFiles = []
+lockedRunEventMap = {}
 
 
 print '\nInformation on lock position for each of the locked runs that we care about'
@@ -414,8 +416,19 @@ for r in runsLocked_keys:
             print 'there are ', len(lockedlogs), ' locked logs for run ', r, ' !?'
         for llog in lockedlogs:
             print '%5d %5d %10d %35s' % (llog.log.run,llog.log.filenr,llog.lock.event, llog.lock.dateStr)
+            filesActiveLockLogFiles.append(llog.log.logfile)
+            lockedRunEventMap[llog.log.run] = llog.lock.event
 
 
+fLL = open('locked_files.txt','w')
+for lf in filesActiveLockLogFiles:
+    fname = os.path.basename(lf).split('.log.1')[0]
+    fLL.write(fname + '\n')
+fLL.close()
+fLL = open('locked_run_event_map.txt','w')
+for run_lf, evt_lf in lockedRunEventMap.iteritems():
+    fLL.write(str(run_lf) + ' '  + str(evt_lf) + '\n')
+fLL.close()
 
 
 
