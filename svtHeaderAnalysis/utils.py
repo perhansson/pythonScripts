@@ -263,4 +263,25 @@ class LockedLog(object):
         #print 'found lock at event ', lock.event, ' and date ', lock.dateStr
         return lock
     
-            
+
+def processEventTimeFile(path_to_file):
+    print 'Process event time file ', path_to_file
+    lockedRunEventTimeMap = {}
+    with open(path_to_file,'r') as f:
+        for line in f:
+            #print 'line ', line
+            #run 5034 event 15738 eventtime 16942195616 eventdate Wed Dec 31 16:00:16 PST 1969
+            m = re.match('.*run\s(\d+)\sevent\s(\d+)\seventtime\s(\d+)\seventdate.*',line)
+            if m != None:
+                run = int(m.group(1))
+                evt = int(m.group(2))
+                time = int(m.group(3))
+                if run not in lockedRunEventTimeMap:
+                    lockedRunEventTimeMap[run] = []
+                if len(lockedRunEventTimeMap[run]) != 0:
+                    raise HeaderException('This shouldnt happen')
+                lockedRunEventTimeMap[run].append(evt)
+                lockedRunEventTimeMap[run].append(time)
+    return lockedRunEventTimeMap
+
+
