@@ -1,0 +1,913 @@
+Namespace(checkevio=True, e=False, logdir=None, n=False)
+Find logs via evio files
+File dir " /nfs/slac/g/hps3/users/phansson/data/engrun/evio/LastFilePerRun "
+Find logs via evio files
+Found  350  files/runs:
+Found  350  runs
+  run    Nevents Nbadevents    eviofilesize     logfilesize logfile
+ 5024      75574          0       558321952             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005024.evio.18-headerAnaLast/hps_005024.evio.18.log.1
+ 5025      21568          0       408898860             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005025.evio.22-headerAnaLast/hps_005025.evio.22.log.1
+ 5031         -3         -3      2096037888             111 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005031.evio.21-headerAnaLast/hps_005031.evio.21.log.1
+ 5033      46647          0       348945224             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005033.evio.21-linkerrorfailed/hps_005033.evio.21.log.1
+error on all for  5034
+NOT first file for  5034
+ 5034     115032     115032       850213956        70979471 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005034.evio.21-headerAnaLast/hps_005034.evio.21.log.1
+ 5035         -3         -3      1439858688             111 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005035.evio.62-headerAnaLast/hps_005035.evio.62.log.1
+ 5036      47227          0       354202860             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005036.evio.42-headerAnaLast/hps_005036.evio.42.log.1
+ 5038     121834          0       896537272             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005038.evio.35-headerAnaLast/hps_005038.evio.35.log.1
+error on all for  5039
+NOT first file for  5039
+ 5039     169144     169144      1284556896       292678208 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005039.evio.36-linkerrorfailed/hps_005039.evio.36.log.1
+ 5041      24236          0       958426800             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005041.evio.27-headerAnaLast/hps_005041.evio.27.log.1
+ 5042      76923          0       570442704             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005042.evio.75-headerAnaLast/hps_005042.evio.75.log.1
+ 5043      55032          0       408991920             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005043.evio.120-headerAnaLast/hps_005043.evio.120.log.1
+ 5044     133869          0      1008578084             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005044.evio.15-headerAnaLast/hps_005044.evio.15.log.1
+ 5045         -3         -3       633999360             111 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005045.evio.20-linkerrorfailed/hps_005045.evio.20.log.1
+ 5047         -3         -3      1666760704             111 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005047.evio.34-headerAnaLast/hps_005047.evio.34.log.1
+ 5048      49995          0      2079320384             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005048.evio.10-linkerrorfailed/hps_005048.evio.10.log.1
+ 5050      87584          0       655104332             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005050.evio.43-headerAnaLast/hps_005050.evio.43.log.1
+ 5051     109313          0       811913080             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005051.evio.13-headerAnaLast/hps_005051.evio.13.log.1
+ 5053      39806          0      1668828960             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005053.evio.94-headerAnaLast/hps_005053.evio.94.log.1
+ 5054      56210          0       438902692             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005054.evio.20-headerAnaLast/hps_005054.evio.20.log.1
+ 5055         -3         -3        21946368             112 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005055.evio.54-linkerrorfailed/hps_005055.evio.54.log.1
+ 5057      49458          0       379730520             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005057.evio.95-headerAnaLast/hps_005057.evio.95.log.1
+ 5060      64226          0       493570004             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005060.evio.16-headerAnaLast/hps_005060.evio.16.log.1
+ 5061      82380          0       632167596             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005061.evio.24-headerAnaLast/hps_005061.evio.24.log.1
+ 5062      47518          1      1755995640             932 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005062.evio.3-headerAnaLast/hps_005062.evio.3.log.1
+ 5063      68846          0       530255116             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005063.evio.10-headerAnaLast/hps_005063.evio.10.log.1
+ 5066     115238          0       897971984             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005066.evio.19-headerAnaLast/hps_005066.evio.19.log.1
+ 5067     102711          0       798640268             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005067.evio.18-headerAnaLast/hps_005067.evio.18.log.1
+ 5068         -3         -3      2048630784             111 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005068.evio.15-headerAnaLast/hps_005068.evio.15.log.1
+ 5069      84925          0       644936616             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005069.evio.58-headerAnaLast/hps_005069.evio.58.log.1
+ 5070         -3         -3      1952432128             111 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005070.evio.30-linkerrorfailed/hps_005070.evio.30.log.1
+ 5071      77744          0       602923944             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005071.evio.12-headerAnaLast/hps_005071.evio.12.log.1
+ 5072     167050          0      1295328708             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005072.evio.34-linkerrorfailed/hps_005072.evio.34.log.1
+ 5074     126647          0       989779684             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005074.evio.1-linkerrorfailed/hps_005074.evio.1.log.1
+ 5076         -3         -3       401575936             111 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005076.evio.27-headerAnaLast/hps_005076.evio.27.log.1
+ 5077     144350          1      1137706312             940 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005077.evio.206-headerAnaLast/hps_005077.evio.206.log.1
+ 5078     180365          0      2017944960             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005078.evio.159-linkerrorfailed/hps_005078.evio.159.log.1
+ 5079      17297          0       367691104             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005079.evio.171-headerAnaLast/hps_005079.evio.171.log.1
+ 5104      60489          1       943452680            1781 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005104.evio.22-headerAnaLast/hps_005104.evio.22.log.1
+error on all for  5138
+NOT first file for  5138
+ 5138      59706      59706      1963361784      8670104119 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005138.evio.15-headerAnaLast/hps_005138.evio.15.log.1
+ 5139     316242          0      1833853520             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005139.evio.18-linkerrorfailed/hps_005139.evio.18.log.1
+ 5140     104803          0       774979468             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005140.evio.18-headerAnaLast/hps_005140.evio.18.log.1
+ 5143     141693          0       921165092             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005143.evio.6-headerAnaLast/hps_005143.evio.6.log.1
+ 5145      26109          0       175422300             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005145.evio.31-headerAnaLast/hps_005145.evio.31.log.1
+ 5146        560          0         3730660             467 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005146.evio.0-headerAnaLast/hps_005146.evio.0.log.1
+ 5147      50844          0       334236192             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005147.evio.12-headerAnaLast/hps_005147.evio.12.log.1
+error on all for  5148
+NOT first file for  5148
+ 5148     249043     249043      1731442204       428322466 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005148.evio.32-linkerrorfailed/hps_005148.evio.32.log.1
+ 5149     108582          0       807648284             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005149.evio.13-headerAnaLast/hps_005149.evio.13.log.1
+ 5150     290426          1      2135190448            1648 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005150.evio.10-linkerrorfailed/hps_005150.evio.10.log.1
+error on all for  5151
+NOT first file for  5151
+ 5151     129225     129225       952902248       223578171 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005151.evio.121-headerAnaLast/hps_005151.evio.121.log.1
+ 5153     185581          0      1386917052             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005153.evio.167-linkerrorfailed/hps_005153.evio.167.log.1
+ 5157      51422          0       381662980             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005157.evio.64-headerAnaLast/hps_005157.evio.64.log.1
+error on all for  5181
+NOT first file for  5181
+ 5181     186106     186106      1366477352       317201233 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005181.evio.30-linkerrorfailed/hps_005181.evio.30.log.1
+error on all for  5182
+NOT first file for  5182
+ 5182     144494     144494      1065342544       246251771 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005182.evio.12-headerAnaLast/hps_005182.evio.12.log.1
+error on all for  5183
+NOT first file for  5183
+ 5183      77748      77748       565434624       132472090 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005183.evio.33-headerAnaLast/hps_005183.evio.33.log.1
+error on all for  5184
+NOT first file for  5184
+ 5184     215500     215500      1588953064       367317003 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005184.evio.16-linkerrorfailed/hps_005184.evio.16.log.1
+error on all for  5185
+NOT first file for  5185
+ 5185      30340      30340       216261516        52052938 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005185.evio.38-headerAnaLast/hps_005185.evio.38.log.1
+error on all for  5186
+NOT first file for  5186
+ 5186      59175      59175       426465424       101533799 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005186.evio.122-headerAnaLast/hps_005186.evio.122.log.1
+error on all for  5188
+NOT first file for  5188
+ 5188     122029     122029       917238120       207948946 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005188.evio.16-headerAnaLast/hps_005188.evio.16.log.1
+error on all for  5189
+NOT first file for  5189
+ 5189     213678     213678      1593954432       366774630 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005189.evio.69-linkerrorfailed/hps_005189.evio.69.log.1
+error on all for  5190
+NOT first file for  5190
+ 5190      13332      13332        99514232        22707223 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005190.evio.4-headerAnaLast/hps_005190.evio.4.log.1
+error on all for  5191
+NOT first file for  5191
+ 5191      17630      17630       128767320        29819455 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005191.evio.1-headerAnaLast/hps_005191.evio.1.log.1
+error on all for  5192
+NOT first file for  5192
+ 5192     129184     129184       938880016       415216281 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005192.evio.14-headerAnaLast/hps_005192.evio.14.log.1
+error on all for  5193
+NOT first file for  5193
+ 5193      99029      99029       715600316       168734914 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005193.evio.25-headerAnaLast/hps_005193.evio.25.log.1
+error on all for  5194
+first file for  5194
+ 5194      69570      69570       501106120       116733820 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005194.evio.0-headerAnaLast/hps_005194.evio.0.log.1
+error on all for  5195
+NOT first file for  5195
+ 5195     202107     202107      1460872356       342056653 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005195.evio.2-linkerrorfailed/hps_005195.evio.2.log.1
+error on all for  5196
+NOT first file for  5196
+ 5196      35704      35704       250637472        60829113 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005196.evio.10-headerAnaLast/hps_005196.evio.10.log.1
+error on all for  5197
+NOT first file for  5197
+ 5197     163802     163802      1172212472       279171911 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005197.evio.17-linkerrorfailed/hps_005197.evio.17.log.1
+error on all for  5198
+NOT first file for  5198
+ 5198     229566     229566      1751054480       391299533 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005198.evio.14-headerAnaLast/hps_005198.evio.14.log.1
+error on all for  5218
+NOT first file for  5218
+ 5218     115766     115766       689730428       338968116 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005218.evio.26-headerAnaLast/hps_005218.evio.26.log.1
+error on all for  5219
+NOT first file for  5219
+ 5219      53839      53839       314140216       157630090 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005219.evio.9-headerAnaLast/hps_005219.evio.9.log.1
+error on all for  5221
+NOT first file for  5221
+ 5221     190564     190564      1117965432       558052323 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005221.evio.5-headerAnaLast/hps_005221.evio.5.log.1
+error on all for  5222
+NOT first file for  5222
+ 5222     247895     247895      1522025336       731179754 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005222.evio.50-headerAnaLast/hps_005222.evio.50.log.1
+error on all for  5228
+NOT first file for  5228
+ 5228     104171     104171       450923164       307193953 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005228.evio.46-headerAnaLast/hps_005228.evio.46.log.1
+error on all for  5229
+NOT first file for  5229
+ 5229     178684     178684       896941300       523254938 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005229.evio.13-headerAnaLast/hps_005229.evio.13.log.1
+error on all for  5233
+NOT first file for  5233
+ 5233      92121      92121       684835128       269719787 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005233.evio.9-headerAnaLast/hps_005233.evio.9.log.1
+error on all for  5236
+first file for  5236
+ 5236     231430     231430      1569653956       670555723 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005236.evio.0-linkerrorfailed/hps_005236.evio.0.log.1
+error on all for  5237
+NOT first file for  5237
+ 5237     169072     169072      1261002796       495101390 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005237.evio.96-linkerrorfailed/hps_005237.evio.96.log.1
+ 5251     187354          0      1319186044             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005251.evio.9-headerAnaLast/hps_005251.evio.9.log.1
+ 5252       9395          0        77103712             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005252.evio.11-headerAnaLast/hps_005252.evio.11.log.1
+error on all for  5253
+NOT first file for  5253
+ 5253     216229     216229      1567139084       371587348 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005253.evio.20-linkerrorfailed/hps_005253.evio.20.log.1
+ 5254      41704          0      1864460836             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005254.evio.21-headerAnaLast/hps_005254.evio.21.log.1
+ 5255      68385          0       530549564             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005255.evio.36-headerAnaLast/hps_005255.evio.36.log.1
+ 5256     200760          0      1398779732             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005256.evio.53-linkerrorfailed/hps_005256.evio.53.log.1
+ 5257     208045          0      1503909600             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005257.evio.46-headerAnaLast/hps_005257.evio.46.log.1
+ 5258     233985          0      1764861244             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005258.evio.8-linkerrorfailed/hps_005258.evio.8.log.1
+ 5259      37723          0       301076116             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005259.evio.25-headerAnaLast/hps_005259.evio.25.log.1
+ 5263     180274          0      1441695116             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005263.evio.36-headerAnaLast/hps_005263.evio.36.log.1
+ 5264     198242          0      1576363624             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005264.evio.39-linkerrorfailed/hps_005264.evio.39.log.1
+error on all for  5265
+NOT first file for  5265
+ 5265     193237     193237      1575676412       334382943 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005265.evio.130-headerAnaLast/hps_005265.evio.130.log.1
+ 5266     197418          0      1589335004             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005266.evio.17-headerAnaLast/hps_005266.evio.17.log.1
+ 5267     129175          0      1034059580             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005267.evio.49-headerAnaLast/hps_005267.evio.49.log.1
+ 5268      54525          0       436940772             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005268.evio.11-headerAnaLast/hps_005268.evio.11.log.1
+ 5269     205993          0      1656601048             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005269.evio.10-headerAnaLast/hps_005269.evio.10.log.1
+ 5270      61267          0       491579052             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005270.evio.82-headerAnaLast/hps_005270.evio.82.log.1
+ 5271     227151          0      1765612272             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005271.evio.24-headerAnaLast/hps_005271.evio.24.log.1
+ 5272     193742          1      1551724596            1783 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005272.evio.28-headerAnaLast/hps_005272.evio.28.log.1
+ 5273      29469          0       812235184             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005273.evio.81-headerAnaLast/hps_005273.evio.81.log.1
+ 5274      61991          0       496077500             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005274.evio.57-headerAnaLast/hps_005274.evio.57.log.1
+ 5275      24307          0       218189712             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005275.evio.160-headerAnaLast/hps_005275.evio.160.log.1
+ 5278      13644          0       101423188             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005278.evio.133-headerAnaLast/hps_005278.evio.133.log.1
+ 5279      58655          0      1835549224             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005279.evio.41-headerAnaLast/hps_005279.evio.41.log.1
+ 5280      74738          0      1164265136             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005280.evio.5-headerAnaLast/hps_005280.evio.5.log.1
+ 5281      69867          0       629894068             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005281.evio.10-headerAnaLast/hps_005281.evio.10.log.1
+ 5282      20775          0       166105588             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005282.evio.24-headerAnaLast/hps_005282.evio.24.log.1
+ 5283     201778          0      1683242196             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005283.evio.5-linkerrorfailed/hps_005283.evio.5.log.1
+ 5284     262326          0      2108894604             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005284.evio.22-headerAnaLast/hps_005284.evio.22.log.1
+ 5285     264246          1      2129049144            1784 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005285.evio.12-linkerrorfailed/hps_005285.evio.12.log.1
+ 5286     201959          0      1618861084             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005286.evio.159-linkerrorfailed/hps_005286.evio.159.log.1
+ 5287     132978          0      1064298344             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005287.evio.17-headerAnaLast/hps_005287.evio.17.log.1
+ 5288     238263          0      1953358400             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005288.evio.73-linkerrorfailed/hps_005288.evio.73.log.1
+ 5292     231222          0      1848444288             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005292.evio.188-headerAnaLast/hps_005292.evio.188.log.1
+ 5293     236111          0      1893746832             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005293.evio.12-headerAnaLast/hps_005293.evio.12.log.1
+ 5294      42825          0       401479996             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005294.evio.78-headerAnaLast/hps_005294.evio.78.log.1
+ 5295     229386          0      1872420532             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005295.evio.7-linkerrorfailed/hps_005295.evio.7.log.1
+ 5296     199189          1      1619011636            1783 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005296.evio.26-headerAnaLast/hps_005296.evio.26.log.1
+ 5297     164067          0      1341340860             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005297.evio.40-headerAnaLast/hps_005297.evio.40.log.1
+ 5298     202204          0      1626737404             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005298.evio.81-headerAnaLast/hps_005298.evio.81.log.1
+ 5299      73160          0       235705788             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005299.evio.10-headerAnaLast/hps_005299.evio.10.log.1
+ 5302     120826          0       982427488             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005302.evio.25-headerAnaLast/hps_005302.evio.25.log.1
+ 5303     163150          0      1010832528             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005303.evio.3-headerAnaLast/hps_005303.evio.3.log.1
+ 5304     131262          0      1007843156             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005304.evio.12-headerAnaLast/hps_005304.evio.12.log.1
+error on all for  5305
+NOT first file for  5305
+ 5305      45160      45160       348323640        78116491 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005305.evio.76-headerAnaLast/hps_005305.evio.76.log.1
+ 5306     157215          1      1264543288            1789 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005306.evio.193-headerAnaLast/hps_005306.evio.193.log.1
+ 5307     127862          0      1026059092             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005307.evio.56-headerAnaLast/hps_005307.evio.56.log.1
+error on all for  5309
+NOT first file for  5309
+ 5309     220903     220903      1683912008     32254157604 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005309.evio.8-headerAnaLast/hps_005309.evio.8.log.1
+error on all for  5310
+NOT first file for  5310
+ 5310     113455     113455       903785152       196280301 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005310.evio.190-headerAnaLast/hps_005310.evio.190.log.1
+ 5311     249925          0      2001573016             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005311.evio.71-headerAnaLast/hps_005311.evio.71.log.1
+ 5312     114062          0       901536260             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005312.evio.67-headerAnaLast/hps_005312.evio.67.log.1
+ 5313     150307          0      1206692408             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005313.evio.188-headerAnaLast/hps_005313.evio.188.log.1
+ 5314     163248          1      1312448852            1789 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005314.evio.187-headerAnaLast/hps_005314.evio.187.log.1
+ 5315       6148          0        49054936             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005315.evio.188-headerAnaLast/hps_005315.evio.188.log.1
+ 5316      54038          0       315222460             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005316.evio.121-headerAnaLast/hps_005316.evio.121.log.1
+ 5318     258704          1      2078831532            1784 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005318.evio.7-linkerrorfailed/hps_005318.evio.7.log.1
+ 5319      41875          0       338377828             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005319.evio.71-headerAnaLast/hps_005319.evio.71.log.1
+ 5322     210365          0      1583071380             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005322.evio.118-headerAnaLast/hps_005322.evio.118.log.1
+ 5329     248845          0      1734335332             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005329.evio.64-linkerrorfailed/hps_005329.evio.64.log.1
+ 5330      45996          0       367725936             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005330.evio.187-headerAnaLast/hps_005330.evio.187.log.1
+ 5331      19357          0       156291640             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005331.evio.109-headerAnaLast/hps_005331.evio.109.log.1
+ 5332      18770          0       150061744             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005332.evio.24-headerAnaLast/hps_005332.evio.24.log.1
+ 5333        853          0         6812576             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005333.evio.82-headerAnaLast/hps_005333.evio.82.log.1
+ 5334     239015          0      1922681668             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005334.evio.20-headerAnaLast/hps_005334.evio.20.log.1
+ 5339      98392          0       789166760             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005339.evio.155-headerAnaLast/hps_005339.evio.155.log.1
+ 5340      33795          0       272139976             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005340.evio.20-headerAnaLast/hps_005340.evio.20.log.1
+ 5341     203760          0      1358120152             471 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005341.evio.0-linkerrorfailed/hps_005341.evio.0.log.1
+ 5342      43583          0       267165432             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005342.evio.53-headerAnaLast/hps_005342.evio.53.log.1
+ 5344     208753          0      1675475332             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005344.evio.187-headerAnaLast/hps_005344.evio.187.log.1
+ 5345     219777          0      1726774844             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005345.evio.9-headerAnaLast/hps_005345.evio.9.log.1
+ 5346     232233          0      1864736716             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005346.evio.9-headerAnaLast/hps_005346.evio.9.log.1
+error on all for  5347
+NOT first file for  5347
+ 5347     125489     125489       966879508       215605286 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005347.evio.30-headerAnaLast/hps_005347.evio.30.log.1
+ 5348     217251          0      1761949988             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005348.evio.92-headerAnaLast/hps_005348.evio.92.log.1
+ 5349     271706          0      2030190168             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005349.evio.42-linkerrorfailed/hps_005349.evio.42.log.1
+ 5350      70939          0       574675772             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005350.evio.201-headerAnaLast/hps_005350.evio.201.log.1
+error on all for  5351
+NOT first file for  5351
+ 5351      58607      58607       473075800       101379801 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005351.evio.173-headerAnaLast/hps_005351.evio.173.log.1
+error on all for  5375
+NOT first file for  5375
+ 5375     126882     126882       918501892     18526058229 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005375.evio.31-headerAnaLast/hps_005375.evio.31.log.1
+error on all for  5378
+NOT first file for  5378
+ 5378      10851      10851        85978840        14481338 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005378.evio.45-headerAnaLast/hps_005378.evio.45.log.1
+ 5379      93288          0       750509188             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005379.evio.21-headerAnaLast/hps_005379.evio.21.log.1
+error on all for  5380
+NOT first file for  5380
+ 5380      72291      72291       581290172       125053121 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005380.evio.191-headerAnaLast/hps_005380.evio.191.log.1
+ 5381      35464          0       279267768             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005381.evio.185-headerAnaLast/hps_005381.evio.185.log.1
+error on all for  5382
+NOT first file for  5382
+ 5382      83906      83906       676205312       145147553 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005382.evio.46-headerAnaLast/hps_005382.evio.46.log.1
+error on all for  5383
+NOT first file for  5383
+ 5383     212529     212529      1711285008       367777397 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005383.evio.61-linkerrorfailed/hps_005383.evio.61.log.1
+ 5384     197070          0      1587911104             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005384.evio.187-linkerrorfailed/hps_005384.evio.187.log.1
+error on all for  5385
+NOT first file for  5385
+ 5385      91487      91487       738421064       157164356 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005385.evio.32-headerAnaLast/hps_005385.evio.32.log.1
+ 5386      15778          0       126603632             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005386.evio.127-headerAnaLast/hps_005386.evio.127.log.1
+ 5387      90371          0       674016960             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005387.evio.7-headerAnaLast/hps_005387.evio.7.log.1
+ 5402     255156          1      1381872264            1648 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005402.evio.3-headerAnaLast/hps_005402.evio.3.log.1
+ 5403       6537          0        51976456             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005403.evio.12-headerAnaLast/hps_005403.evio.12.log.1
+ 5404     251475          0      2014457588             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005404.evio.264-headerAnaLast/hps_005404.evio.264.log.1
+ 5405      27416          0       201473544             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005405.evio.98-headerAnaLast/hps_005405.evio.98.log.1
+ 5406     148876          0      1203980572             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005406.evio.84-headerAnaLast/hps_005406.evio.84.log.1
+error on all for  5407
+NOT first file for  5407
+ 5407      22044      22044       179010552        38125811 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005407.evio.56-headerAnaLast/hps_005407.evio.56.log.1
+error on all for  5409
+NOT first file for  5409
+ 5409     197383     197383      1510960016     28819978884 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005409.evio.7-headerAnaLast/hps_005409.evio.7.log.1
+error on all for  5410
+NOT first file for  5410
+ 5410      57263      57263       465073224        99054681 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005410.evio.207-headerAnaLast/hps_005410.evio.207.log.1
+ 5411     213220          0      1735858424             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005411.evio.278-headerAnaLast/hps_005411.evio.278.log.1
+ 5412     246919          0      2011047364             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005412.evio.118-linkerrorfailed/hps_005412.evio.118.log.1
+ 5538     250487          0      1965536388             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005538.evio.33-headerAnaLast/hps_005538.evio.33.log.1
+ 5541     100762          0       797265744             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005541.evio.14-headerAnaLast/hps_005541.evio.14.log.1
+ 5542     260870          1      2079062396            1790 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005542.evio.39-linkerrorfailed/hps_005542.evio.39.log.1
+ 5546     222038          1      2054612916            1783 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005546.evio.36-linkerrorfailed/hps_005546.evio.36.log.1
+ 5547     201864          0      1605985956             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005547.evio.18-linkerrorfailed/hps_005547.evio.18.log.1
+ 5548     132545          0      1066338736             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005548.evio.634-linkerrorfailed/hps_005548.evio.634.log.1
+ 5549     112305          0       906824196             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005549.evio.630-linkerrorfailed/hps_005549.evio.630.log.1
+ 5550     241893      13521      1952337908        23404279 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005550.evio.91-linkerrorfailed/hps_005550.evio.91.log.1
+ 5554     124081          0       997083072             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005554.evio.250-headerAnaLast/hps_005554.evio.250.log.1
+ 5558      69474          0       557691656             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005558.evio.594-headerAnaLast/hps_005558.evio.594.log.1
+error on all for  5559
+NOT first file for  5559
+ 5559        772        772         6318924         1343958 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005559.evio.560-headerAnaLast/hps_005559.evio.560.log.1
+ 5560      65959          0       523723656             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005560.evio.373-headerAnaLast/hps_005560.evio.373.log.1
+ 5562       8042          0        50633104             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005562.evio.33-headerAnaLast/hps_005562.evio.33.log.1
+ 5563      32284          0       258413940             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005563.evio.56-headerAnaLast/hps_005563.evio.56.log.1
+ 5564       8725          0        69631484             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005564.evio.19-headerAnaLast/hps_005564.evio.19.log.1
+ 5565     147727          0      1186850052             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005565.evio.11-headerAnaLast/hps_005565.evio.11.log.1
+ 5566     217707          0      1741071352             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005566.evio.73-headerAnaLast/hps_005566.evio.73.log.1
+ 5567      90826          0       722679124             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005567.evio.60-headerAnaLast/hps_005567.evio.60.log.1
+ 5568     149610          0      1175483612             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005568.evio.446-linkerrorfailed/hps_005568.evio.446.log.1
+error on all for  5569
+NOT first file for  5569
+ 5569      14886      14886       193937904        25742469 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005569.evio.169-headerAnaLast/hps_005569.evio.169.log.1
+error on all for  5575
+NOT first file for  5575
+ 5575     191473     191473      1502983092       832988542 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005575.evio.392-headerAnaLast/hps_005575.evio.392.log.1
+error on all for  5576
+NOT first file for  5576
+ 5576     192784     192784      1511039024      1125941082 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005576.evio.174-headerAnaLast/hps_005576.evio.174.log.1
+error on all for  5577
+NOT first file for  5577
+ 5577      66911      66911       488316620       291052363 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005577.evio.421-headerAnaLast/hps_005577.evio.421.log.1
+error on all for  5578
+NOT first file for  5578
+ 5578     201933     201933      1527948316       878500002 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005578.evio.435-headerAnaLast/hps_005578.evio.435.log.1
+error on all for  5579
+NOT first file for  5579
+ 5579     126163     126163       994528184       544913678 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005579.evio.153-headerAnaLast/hps_005579.evio.153.log.1
+ 5597     104328          0       808532616             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005597.evio.5-headerAnaLast/hps_005597.evio.5.log.1
+ 5598      90360          1       705470888            1781 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005598.evio.18-headerAnaLast/hps_005598.evio.18.log.1
+ 5601      65023          0       502217224             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005601.evio.18-headerAnaLast/hps_005601.evio.18.log.1
+ 5602     202730          0      1414548056             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005602.evio.0-linkerrorfailed/hps_005602.evio.0.log.1
+ 5603     248401          0      1929981144             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005603.evio.12-linkerrorfailed/hps_005603.evio.12.log.1
+ 5604     278410          0      2120323912             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005604.evio.4-headerAnaLast/hps_005604.evio.4.log.1
+ 5605       2564          0        19918608             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005605.evio.112-headerAnaLast/hps_005605.evio.112.log.1
+error on all for  5610
+NOT first file for  5610
+ 5610     116133     116133       894116008       200916538 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005610.evio.153-headerAnaLast/hps_005610.evio.153.log.1
+ 5611      65322          0       500912976             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005611.evio.269-headerAnaLast/hps_005611.evio.269.log.1
+ 5615     289510          0      1976796584             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005615.evio.26-headerAnaLast/hps_005615.evio.26.log.1
+ 5616      51259          0       354034408             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005616.evio.8-headerAnaLast/hps_005616.evio.8.log.1
+ 5617     214963          0      1770197560             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005617.evio.48-linkerrorfailed/hps_005617.evio.48.log.1
+ 5618      48136          0       388408344             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005618.evio.19-headerAnaLast/hps_005618.evio.19.log.1
+ 5619      76796          0       622791344             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005619.evio.31-headerAnaLast/hps_005619.evio.31.log.1
+ 5620     242808          0      1952521836             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005620.evio.18-linkerrorfailed/hps_005620.evio.18.log.1
+ 5621     118907          0       855978388             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005621.evio.29-headerAnaLast/hps_005621.evio.29.log.1
+ 5622     251889          0      2106592888             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005622.evio.8-linkerrorfailed/hps_005622.evio.8.log.1
+ 5623     191113          0      1442884196             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005623.evio.270-headerAnaLast/hps_005623.evio.270.log.1
+ 5624     116327          0       941183232             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005624.evio.177-headerAnaLast/hps_005624.evio.177.log.1
+ 5626     184327          1      1702378572            1783 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005626.evio.17-headerAnaLast/hps_005626.evio.17.log.1
+ 5631     213383          1      1845726500            1790 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005631.evio.49-headerAnaLast/hps_005631.evio.49.log.1
+ 5632     215306          0      1799078524             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005632.evio.47-headerAnaLast/hps_005632.evio.47.log.1
+ 5633       2563          0        22243872             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005633.evio.16-headerAnaLast/hps_005633.evio.16.log.1
+ 5634     194211          0      1660766280             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005634.evio.377-linkerrorfailed/hps_005634.evio.377.log.1
+ 5635     242060          0      2040860536             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005635.evio.34-headerAnaLast/hps_005635.evio.34.log.1
+ 5636      41177          0       336843264             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005636.evio.81-headerAnaLast/hps_005636.evio.81.log.1
+ 5637      59382          0       500322312             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005637.evio.119-headerAnaLast/hps_005637.evio.119.log.1
+ 5638         -1         -1           18488            None -
+error on all for  5639
+NOT first file for  5639
+ 5639     143050     143050      1173736328     20886764077 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005639.evio.20-linkerrorfailed/hps_005639.evio.20.log.1
+error on all for  5640
+NOT first file for  5640
+ 5640     218691     218691      1819495660     32167586244 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005640.evio.38-linkerrorfailed/hps_005640.evio.38.log.1
+error on all for  5641
+NOT first file for  5641
+ 5641     202056     202056      1343833468     29390204801 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005641.evio.3-headerAnaLast/hps_005641.evio.3.log.1
+ 5642     167100          0      1370107208             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005642.evio.272-linkerrorfailed/hps_005642.evio.272.log.1
+ 5643     176321          0      1173258004             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005643.evio.264-linkerrorfailed/hps_005643.evio.264.log.1
+ 5644     198898          0      1681838832             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005644.evio.292-headerAnaLast/hps_005644.evio.292.log.1
+ 5645     194284          1      1635351168            1783 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005645.evio.4-linkerrorfailed/hps_005645.evio.4.log.1
+ 5646     158768          0      1335566740             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005646.evio.12-linkerrorfailed/hps_005646.evio.12.log.1
+ 5648     179142          0      1534082520             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005648.evio.34-headerAnaLast/hps_005648.evio.34.log.1
+ 5649     218275          0      1876538176             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005649.evio.105-linkerrorfailed/hps_005649.evio.105.log.1
+ 5650     160866          0      1376333844             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005650.evio.76-linkerrorfailed/hps_005650.evio.76.log.1
+ 5651     242601          0      2093056764             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005651.evio.37-headerAnaLast/hps_005651.evio.37.log.1
+ 5652      18244          0       150267860             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005652.evio.97-headerAnaLast/hps_005652.evio.97.log.1
+ 5653      62938          0       541339272             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005653.evio.52-headerAnaLast/hps_005653.evio.52.log.1
+ 5654      33945          0       251376028             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005654.evio.94-headerAnaLast/hps_005654.evio.94.log.1
+ 5655     171357          0      1439502448             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005655.evio.27-headerAnaLast/hps_005655.evio.27.log.1
+ 5656     140143          0      1197035956             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005656.evio.133-headerAnaLast/hps_005656.evio.133.log.1
+ 5657     172553          0      1469602292             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005657.evio.25-linkerrorfailed/hps_005657.evio.25.log.1
+ 5683         -1         -1           18516            None -
+ 5685      51404          0       421804596             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005685.evio.2-headerAnaLast/hps_005685.evio.2.log.1
+ 5686     231789          0      1910043908             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005686.evio.23-linkerrorfailed/hps_005686.evio.23.log.1
+ 5687         -1         -1           71524            None -
+ 5688     210977          0      1465416704             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005688.evio.2-headerAnaLast/hps_005688.evio.2.log.1
+ 5689     225307          0      1875058736             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005689.evio.397-headerAnaLast/hps_005689.evio.397.log.1
+ 5690         -1         -1          170492            None -
+ 5691      82492          0       614612816             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005691.evio.32-headerAnaLast/hps_005691.evio.32.log.1
+ 5692     231504          0      1523712968             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005692.evio.407-headerAnaLast/hps_005692.evio.407.log.1
+ 5693      85562          1       714530456            1795 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005693.evio.438-headerAnaLast/hps_005693.evio.438.log.1
+ 5694      30697          1       243583920             939 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005694.evio.275-headerAnaLast/hps_005694.evio.275.log.1
+ 5695     241725          1      1618262516            1790 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005695.evio.130-headerAnaLast/hps_005695.evio.130.log.1
+ 5696      58231          0       382558516             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005696.evio.378-headerAnaLast/hps_005696.evio.378.log.1
+error on all for  5697
+NOT first file for  5697
+ 5697     157630     157630      1341328252       272747226 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005697.evio.117-headerAnaLast/hps_005697.evio.117.log.1
+ 5698      38317          0       313012968             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005698.evio.493-headerAnaLast/hps_005698.evio.493.log.1
+ 5702         -1         -1           62108            None -
+ 5703     161216          0      1344989680             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005703.evio.13-headerAnaLast/hps_005703.evio.13.log.1
+ 5704     180936          0      1384790996             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005704.evio.28-headerAnaLast/hps_005704.evio.28.log.1
+ 5705     135052          0      1016826768             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005705.evio.6-headerAnaLast/hps_005705.evio.6.log.1
+ 5706     107025          0       903830796             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005706.evio.211-headerAnaLast/hps_005706.evio.211.log.1
+ 5707     202040          0      1460913960             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005707.evio.0-headerAnaLast/hps_005707.evio.0.log.1
+ 5708        230          0         2011768             467 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005708.evio.0-headerAnaLast/hps_005708.evio.0.log.1
+ 5709        420          0         3627384             467 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005709.evio.0-headerAnaLast/hps_005709.evio.0.log.1
+ 5710     229620          0      1916971288             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005710.evio.311-linkerrorfailed/hps_005710.evio.311.log.1
+ 5711     231098          0      1884821804             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005711.evio.24-linkerrorfailed/hps_005711.evio.24.log.1
+ 5712         -1         -1          255364            None -
+ 5713      86869          0       694967596             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005713.evio.533-headerAnaLast/hps_005713.evio.533.log.1
+ 5714       4720          0        23038952             468 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005714.evio.0-headerAnaLast/hps_005714.evio.0.log.1
+ 5715     229374          0      1920331080             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005715.evio.394-headerAnaLast/hps_005715.evio.394.log.1
+ 5717     214160          0      1658913516             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005717.evio.0-linkerrorfailed/hps_005717.evio.0.log.1
+ 5718         -1         -1          124468            None -
+ 5721      38742          0       326710620             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005721.evio.6-headerAnaLast/hps_005721.evio.6.log.1
+error on all for  5722
+NOT first file for  5722
+ 5722     181180     181180      1440646632     26489664631 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005722.evio.37-headerAnaLast/hps_005722.evio.37.log.1
+ 5723     184729          0      1553562900             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005723.evio.432-headerAnaLast/hps_005723.evio.432.log.1
+ 5724       5935          0        50432604             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005724.evio.467-headerAnaLast/hps_005724.evio.467.log.1
+error on all for  5725
+NOT first file for  5725
+ 5725     242968     242968      2058932208       420467306 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005725.evio.359-headerAnaLast/hps_005725.evio.359.log.1
+ 5726     130494      51474      1112127428        89082493 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005726.evio.159-linkerrorfailed/hps_005726.evio.159.log.1
+ 5727         -1         -1           51260            None -
+ 5728        820          0         6194856             467 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005728.evio.0-headerAnaLast/hps_005728.evio.0.log.1
+ 5729     351340          0       986774472             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005729.evio.0-linkerrorfailed/hps_005729.evio.0.log.1
+ 5730     624800          0      1997648516             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005730.evio.0-headerAnaLast/hps_005730.evio.0.log.1
+ 5731         -1         -1           18504            None -
+ 5733     194263       5897      1649812040        10117113 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005733.evio.34-headerAnaLast/hps_005733.evio.34.log.1
+ 5734         -1         -1          173560            None -
+ 5735         -1         -1          316200            None -
+ 5736         -1         -1          369988            None -
+ 5737     100010          0       761168400             471 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005737.evio.0-headerAnaLast/hps_005737.evio.0.log.1
+ 5738     404110          0      1283952832             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005738.evio.0-linkerrorfailed/hps_005738.evio.0.log.1
+ 5739     143896          0      1211477684             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005739.evio.395-headerAnaLast/hps_005739.evio.395.log.1
+ 5740     191720          0      1454218740             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005740.evio.0-linkerrorfailed/hps_005740.evio.0.log.1
+ 5741     196159          0      1567201324             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005741.evio.441-linkerrorfailed/hps_005741.evio.441.log.1
+ 5742      29687          0       249539560             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005742.evio.471-headerAnaLast/hps_005742.evio.471.log.1
+ 5743     163500          0      1386158248             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005743.evio.249-headerAnaLast/hps_005743.evio.249.log.1
+ 5744         -1         -1           29132            None -
+ 5745      79271          0       415824408             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005745.evio.6-headerAnaLast/hps_005745.evio.6.log.1
+error on all for  5747
+NOT first file for  5747
+ 5747      67691      67691       444364896      9883552565 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005747.evio.15-headerAnaLast/hps_005747.evio.15.log.1
+error on all for  5748
+NOT first file for  5748
+ 5748     176766     176766       908410172     25809671388 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005748.evio.5-headerAnaLast/hps_005748.evio.5.log.1
+error on all for  5749
+NOT first file for  5749
+ 5749     168858     168858      1307455592     24655015109 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005749.evio.17-linkerrorfailed/hps_005749.evio.17.log.1
+ 5750         -1         -1           82784            None -
+ 5751         -1         -1           69556            None -
+ 5752     146543          0       798365120             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005752.evio.6-headerAnaLast/hps_005752.evio.6.log.1
+error on all for  5753
+first file for  5753
+ 5753     132120     132120       964463112     19027936758 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005753.evio.0-headerAnaLast/hps_005753.evio.0.log.1
+ 5754     216161          2      1708811164            8151 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005754.evio.40-linkerrorfailed/hps_005754.evio.40.log.1
+ 5755     199444          0      1790237012             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005755.evio.24-linkerrorfailed/hps_005755.evio.24.log.1
+ 5756     261212          0      2110614984             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005756.evio.0-linkerrorfailed/hps_005756.evio.0.log.1
+ 5757     110311          0       831254052             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005757.evio.5-headerAnaLast/hps_005757.evio.5.log.1
+ 5758          1          0          147408             465 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005758.evio.0-headerAnaLast/hps_005758.evio.0.log.1
+ 5759         -1         -1          110784            None -
+ 5760      48650          0       369677976             469 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005760.evio.0-headerAnaLast/hps_005760.evio.0.log.1
+ 5761      49270          0       364972484             469 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005761.evio.0-headerAnaLast/hps_005761.evio.0.log.1
+ 5762       2750          0        17529400             468 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005762.evio.0-headerAnaLast/hps_005762.evio.0.log.1
+ 5763     222200          0      1483200756             471 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005763.evio.0-linkerrorfailed/hps_005763.evio.0.log.1
+ 5764     194176          0      1283243428             471 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005764.evio.0-headerAnaLast/hps_005764.evio.0.log.1
+ 5765       7172          0        52914412             474 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005765.evio.6-headerAnaLast/hps_005765.evio.6.log.1
+ 5766       6184          0        48186692             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005766.evio.449-headerAnaLast/hps_005766.evio.449.log.1
+ 5767      41280          0       335604364             470 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005767.evio.0-headerAnaLast/hps_005767.evio.0.log.1
+error on all for  5768
+NOT first file for  5768
+ 5768     190643     190643      1591763788       332180446 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005768.evio.441-linkerrorfailed/hps_005768.evio.441.log.1
+ 5769     100597          0       850216804             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005769.evio.448-headerAnaLast/hps_005769.evio.448.log.1
+ 5770      30811          0       256804616             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005770.evio.472-headerAnaLast/hps_005770.evio.472.log.1
+ 5771      32075          0       268219428             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005771.evio.463-headerAnaLast/hps_005771.evio.463.log.1
+ 5772     210767          0      1772106824             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005772.evio.470-headerAnaLast/hps_005772.evio.470.log.1
+ 5773     212944          0      1804216268             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005773.evio.562-linkerrorfailed/hps_005773.evio.562.log.1
+ 5774     329107          1      1903025120            1790 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005774.evio.44-linkerrorfailed/hps_005774.evio.44.log.1
+ 5775     178848          0      1395452256             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005775.evio.234-linkerrorfailed/hps_005775.evio.234.log.1
+ 5776     185227          0      1569019416             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005776.evio.341-linkerrorfailed/hps_005776.evio.341.log.1
+ 5778     191020          0      1509739448             471 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005778.evio.0-linkerrorfailed/hps_005778.evio.0.log.1
+ 5779      50650          0       439458564             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005779.evio.81-headerAnaLast/hps_005779.evio.81.log.1
+ 5780         -1         -1           22888            None -
+ 5781     194591          0      1195994320             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005781.evio.35-headerAnaLast/hps_005781.evio.35.log.1
+ 5782     120092          0       996615048             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005782.evio.490-headerAnaLast/hps_005782.evio.490.log.1
+ 5783      56161          0       475148360             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005783.evio.480-headerAnaLast/hps_005783.evio.480.log.1
+ 5784      33082          0       233885936             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005784.evio.28-headerAnaLast/hps_005784.evio.28.log.1
+ 5785     116604          0       756034716             476 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005785.evio.25-headerAnaLast/hps_005785.evio.25.log.1
+ 5786      10647          0        63335876             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005786.evio.20-headerAnaLast/hps_005786.evio.20.log.1
+error on all for  5788
+NOT first file for  5788
+ 5788      29024      29024       140229232      4206408949 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005788.evio.1-headerAnaLast/hps_005788.evio.1.log.1
+error on all for  5789
+first file for  5789
+ 5789     116620     116620       626295952     16781521757 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005789.evio.0-linkerrorfailed/hps_005789.evio.0.log.1
+ 5790      26700          0       141964228             475 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005790.evio.5-headerAnaLast/hps_005790.evio.5.log.1
+ 5791     171021          0      1467991004             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005791.evio.414-headerAnaLast/hps_005791.evio.414.log.1
+ 5792     187890          0      1568626792             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005792.evio.93-headerAnaLast/hps_005792.evio.93.log.1
+ 5793     220711          0      1878171536             477 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005793.evio.95-linkerrorfailed/hps_005793.evio.95.log.1
+ 5794     220703          2      1839449532            2555 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005794.evio.54-linkerrorfailed/hps_005794.evio.54.log.1
+error on all for  5795
+NOT first file for  5795
+ 5795      30176      30176       259979868        52194171 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005795.evio.375-headerAnaLast/hps_005795.evio.375.log.1
+ 5796     237061          0      2023217060             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005796.evio.476-headerAnaLast/hps_005796.evio.476.log.1
+ 5797     223485          0      1874768440             478 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005797.evio.412-headerAnaLast/hps_005797.evio.412.log.1
+
+
+--> Summary <--
+Run log with results                    :  325
+Run log without any errors              :  230
+Run log w/ errors on fraction of events :  23
+Run log w/ error on every event         :  65
+Run log w/ lockup                       :  7
+
+--> More details on each category <--
+
+Run logs w/ no error:  230
+  run    nEvents
+ 5024      75574 
+ 5025      21568 
+ 5033      46647 
+ 5036      47227 
+ 5038     121834 
+ 5041      24236 
+ 5042      76923 
+ 5043      55032 
+ 5044     133869 
+ 5048      49995 
+ 5050      87584 
+ 5051     109313 
+ 5053      39806 
+ 5054      56210 
+ 5057      49458 
+ 5060      64226 
+ 5061      82380 
+ 5063      68846 
+ 5066     115238 
+ 5067     102711 
+ 5069      84925 
+ 5071      77744 
+ 5072     167050 
+ 5074     126647 
+ 5078     180365 
+ 5079      17297 
+ 5139     316242 
+ 5140     104803 
+ 5143     141693 
+ 5145      26109 
+ 5146        560 
+ 5147      50844 
+ 5149     108582 
+ 5153     185581 
+ 5157      51422 
+ 5251     187354 
+ 5252       9395 
+ 5254      41704 
+ 5255      68385 
+ 5256     200760 
+ 5257     208045 
+ 5258     233985 
+ 5259      37723 
+ 5263     180274 
+ 5264     198242 
+ 5266     197418 
+ 5267     129175 
+ 5268      54525 
+ 5269     205993 
+ 5270      61267 
+ 5271     227151 
+ 5273      29469 
+ 5274      61991 
+ 5275      24307 
+ 5278      13644 
+ 5279      58655 
+ 5280      74738 
+ 5281      69867 
+ 5282      20775 
+ 5283     201778 
+ 5284     262326 
+ 5286     201959 
+ 5287     132978 
+ 5288     238263 
+ 5292     231222 
+ 5293     236111 
+ 5294      42825 
+ 5295     229386 
+ 5297     164067 
+ 5298     202204 
+ 5299      73160 
+ 5302     120826 
+ 5303     163150 
+ 5304     131262 
+ 5307     127862 
+ 5311     249925 
+ 5312     114062 
+ 5313     150307 
+ 5315       6148 
+ 5316      54038 
+ 5319      41875 
+ 5322     210365 
+ 5329     248845 
+ 5330      45996 
+ 5331      19357 
+ 5332      18770 
+ 5333        853 
+ 5334     239015 
+ 5339      98392 
+ 5340      33795 
+ 5341     203760 
+ 5342      43583 
+ 5344     208753 
+ 5345     219777 
+ 5346     232233 
+ 5348     217251 
+ 5349     271706 
+ 5350      70939 
+ 5379      93288 
+ 5381      35464 
+ 5384     197070 
+ 5386      15778 
+ 5387      90371 
+ 5403       6537 
+ 5404     251475 
+ 5405      27416 
+ 5406     148876 
+ 5411     213220 
+ 5412     246919 
+ 5538     250487 
+ 5541     100762 
+ 5547     201864 
+ 5548     132545 
+ 5549     112305 
+ 5554     124081 
+ 5558      69474 
+ 5560      65959 
+ 5562       8042 
+ 5563      32284 
+ 5564       8725 
+ 5565     147727 
+ 5566     217707 
+ 5567      90826 
+ 5568     149610 
+ 5597     104328 
+ 5601      65023 
+ 5602     202730 
+ 5603     248401 
+ 5604     278410 
+ 5605       2564 
+ 5611      65322 
+ 5615     289510 
+ 5616      51259 
+ 5617     214963 
+ 5618      48136 
+ 5619      76796 
+ 5620     242808 
+ 5621     118907 
+ 5622     251889 
+ 5623     191113 
+ 5624     116327 
+ 5632     215306 
+ 5633       2563 
+ 5634     194211 
+ 5635     242060 
+ 5636      41177 
+ 5637      59382 
+ 5642     167100 
+ 5643     176321 
+ 5644     198898 
+ 5646     158768 
+ 5648     179142 
+ 5649     218275 
+ 5650     160866 
+ 5651     242601 
+ 5652      18244 
+ 5653      62938 
+ 5654      33945 
+ 5655     171357 
+ 5656     140143 
+ 5657     172553 
+ 5685      51404 
+ 5686     231789 
+ 5688     210977 
+ 5689     225307 
+ 5691      82492 
+ 5692     231504 
+ 5696      58231 
+ 5698      38317 
+ 5703     161216 
+ 5704     180936 
+ 5705     135052 
+ 5706     107025 
+ 5707     202040 
+ 5708        230 
+ 5709        420 
+ 5710     229620 
+ 5711     231098 
+ 5713      86869 
+ 5714       4720 
+ 5715     229374 
+ 5717     214160 
+ 5721      38742 
+ 5723     184729 
+ 5724       5935 
+ 5728        820 
+ 5729     351340 
+ 5730     624800 
+ 5737     100010 
+ 5738     404110 
+ 5739     143896 
+ 5740     191720 
+ 5741     196159 
+ 5742      29687 
+ 5743     163500 
+ 5745      79271 
+ 5752     146543 
+ 5755     199444 
+ 5756     261212 
+ 5757     110311 
+ 5758          1 
+ 5760      48650 
+ 5761      49270 
+ 5762       2750 
+ 5763     222200 
+ 5764     194176 
+ 5765       7172 
+ 5766       6184 
+ 5767      41280 
+ 5769     100597 
+ 5770      30811 
+ 5771      32075 
+ 5772     210767 
+ 5773     212944 
+ 5775     178848 
+ 5776     185227 
+ 5778     191020 
+ 5779      50650 
+ 5781     194591 
+ 5782     120092 
+ 5783      56161 
+ 5784      33082 
+ 5785     116604 
+ 5786      10647 
+ 5790      26700 
+ 5791     171021 
+ 5792     187890 
+ 5793     220711 
+ 5796     237061 
+ 5797     223485 
+Total   29393332 
+
+Run logs w/ error on at least one but not all events (not locked) :  23
+  run    nEvents nBadEvents fractionBad     Errors
+ 5062      47518          1   0.000021 SvtEvioHeaderMultisampleErrorBitException,
+ 5077     144350          1   0.000007 SvtEvioHeaderMultisampleErrorBitException,
+ 5104      60489          1   0.000017 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5150     290426          1   0.000003 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5272     193742          1   0.000005 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5285     264246          1   0.000004 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5296     199189          1   0.000005 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5306     157215          1   0.000006 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5314     163248          1   0.000006 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5318     258704          1   0.000004 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5402     255156          1   0.000004 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5542     260870          1   0.000004 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5546     222038          1   0.000005 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5598      90360          1   0.000011 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5626     184327          1   0.000005 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5631     213383          1   0.000005 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5645     194284          1   0.000005 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5693      85562          1   0.000012 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5694      30697          1   0.000033 SvtEvioHeaderMultisampleErrorBitException,
+ 5695     241725          1   0.000004 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5754     216161          2   0.000009 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5774     329107          1   0.000003 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5794     220703          2   0.000009 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+Total    4323500         25   0.000006
+
+Run logs w/ error on all events:  65
+  run    nEvents nBadEvents evioFileId            ErrorName/roc:count
+ 5034     115032     115032         21 SvtEvioHeaderApvFrameCountException/{54: 115032},SvtEvioHeaderApvBufferAddressException/{54: 115032},SvtEvioHeaderSyncErrorException/{54: 115032},
+ 5039     169144     169144         36 SvtEvioHeaderApvFrameCountException/{54: 845720},SvtEvioHeaderApvBufferAddressException/{54: 845720},SvtEvioHeaderSyncErrorException/{54: 169144},SvtEvioHeaderMultisampleErrorBitException/{54: 1},
+ 5138      59706      59706         15 SvtEvioHeaderApvReadErrorException/{64: 7164720, 65: 5373540, 51: 5373540, 52: 7164720, 53: 5373540, 54: 3582360, 55: 5373540, 56: 3582360, 57: 5373540, 59: 5373540, 60: 3582360, 62: 5373540, 63: 1791180},
+ 5148     249043     249043         32 SvtEvioHeaderApvFrameCountException/{54: 1245215},SvtEvioHeaderApvBufferAddressException/{54: 1245215},SvtEvioHeaderSyncErrorException/{54: 249043},
+ 5151     129225     129225        121 SvtEvioHeaderApvFrameCountException/{57: 646125},SvtEvioHeaderApvBufferAddressException/{57: 646125},SvtEvioHeaderSyncErrorException/{57: 129225},
+ 5181     186106     186106         30 SvtEvioHeaderApvFrameCountException/{57: 2, 62: 1116636, 63: 930530},SvtEvioHeaderApvBufferAddressException/{57: 1},SvtEvioHeaderApvReadErrorException/{57: 1},SvtEvioHeaderMultisampleErrorBitException/{57: 1},
+ 5182     144494     144494         12 SvtEvioHeaderApvFrameCountException/{62: 866964, 63: 722470},
+ 5183      77748      77748         33 SvtEvioHeaderApvFrameCountException/{62: 466488, 63: 388740},
+ 5184     215500     215500         16 SvtEvioHeaderApvFrameCountException/{62: 1293000, 63: 1077500},
+ 5185      30340      30340         38 SvtEvioHeaderApvFrameCountException/{62: 182040, 63: 151700},
+ 5186      59175      59175        122 SvtEvioHeaderApvFrameCountException/{62: 355050, 63: 295875},
+ 5188     122029     122029         16 SvtEvioHeaderApvFrameCountException/{62: 732174, 63: 610145},
+ 5189     213678     213678         69 SvtEvioHeaderApvFrameCountException/{62: 1282068, 63: 1068390},
+ 5190      13332      13332          4 SvtEvioHeaderApvFrameCountException/{62: 79992, 63: 66660},
+ 5191      17630      17630          1 SvtEvioHeaderApvFrameCountException/{62: 105780, 63: 88150},
+ 5192     129184     129184         14 SvtEvioHeaderApvFrameCountException/{62: 775104, 54: 645920, 63: 645920},SvtEvioHeaderApvBufferAddressException/{54: 645920},SvtEvioHeaderSyncErrorException/{54: 129184},
+ 5193      99029      99029         25 SvtEvioHeaderApvFrameCountException/{62: 594174, 63: 495145},
+ 5195     202107     202107          2 SvtEvioHeaderApvFrameCountException/{62: 1212642, 63: 1010535},
+ 5196      35704      35704         10 SvtEvioHeaderApvFrameCountException/{62: 214224, 63: 178520},
+ 5197     163802     163802         17 SvtEvioHeaderApvFrameCountException/{62: 982812, 63: 819010},
+ 5198     229566     229566         14 SvtEvioHeaderApvFrameCountException/{62: 1377396, 63: 1147830},
+ 5218     115766     115766         26 SvtEvioHeaderApvFrameCountException/{59: 1736490, 60: 578830},
+ 5219      53839      53839          9 SvtEvioHeaderApvFrameCountException/{59: 807585, 60: 269195},
+ 5221     190564     190564          5 SvtEvioHeaderApvFrameCountException/{59: 2858460, 60: 952820, 55: 1},SvtEvioHeaderApvBufferAddressException/{55: 1},SvtEvioHeaderApvReadErrorException/{55: 1},SvtEvioHeaderMultisampleErrorBitException/{55: 1},
+ 5222     247895     247895         50 SvtEvioHeaderApvFrameCountException/{59: 3718425, 60: 1239475},
+ 5228     104171     104171         46 SvtEvioHeaderApvFrameCountException/{59: 1562565, 60: 520855},
+ 5229     178684     178684         13 SvtEvioHeaderApvFrameCountException/{59: 2680260, 60: 893420},
+ 5233      92121      92121          9 SvtEvioHeaderApvFrameCountException/{59: 1381815, 60: 460605},
+ 5237     169072     169072         96 SvtEvioHeaderApvFrameCountException/{59: 2536080, 60: 845360},
+ 5253     216229     216229         20 SvtEvioHeaderApvFrameCountException/{54: 1081145},SvtEvioHeaderApvBufferAddressException/{54: 1081145},SvtEvioHeaderSyncErrorException/{54: 216229},
+ 5265     193237     193237        130 SvtEvioHeaderApvFrameCountException/{54: 966185},SvtEvioHeaderApvBufferAddressException/{54: 966185},SvtEvioHeaderSyncErrorException/{54: 193237},
+ 5305      45160      45160         76 SvtEvioHeaderApvFrameCountException/{54: 225800},SvtEvioHeaderApvBufferAddressException/{54: 225800},SvtEvioHeaderSyncErrorException/{54: 45160},
+ 5309     220903     220903          8 SvtEvioHeaderApvReadErrorException/{64: 26508360, 65: 19881270, 51: 19881270, 52: 26508360, 53: 19881270, 54: 13254180, 55: 19881270, 56: 13254180, 57: 19881270, 59: 19881270, 60: 13254180, 62: 19881270, 63: 6627090},
+ 5310     113455     113455        190 SvtEvioHeaderApvFrameCountException/{54: 567275},SvtEvioHeaderApvBufferAddressException/{54: 567275},SvtEvioHeaderSyncErrorException/{54: 113455},
+ 5347     125489     125489         30 SvtEvioHeaderApvFrameCountException/{54: 627445},SvtEvioHeaderApvBufferAddressException/{54: 627445},SvtEvioHeaderSyncErrorException/{54: 125489},
+ 5351      58607      58607        173 SvtEvioHeaderApvFrameCountException/{54: 293035},SvtEvioHeaderApvBufferAddressException/{54: 293035},SvtEvioHeaderSyncErrorException/{54: 58607},
+ 5375     126882     126882         31 SvtEvioHeaderApvFrameCountException/{54: 2},SvtEvioHeaderApvBufferAddressException/{54: 1},SvtEvioHeaderApvReadErrorException/{64: 15225840, 65: 11419380, 51: 11419380, 52: 15225840, 53: 11419380, 54: 7612920, 55: 11419380, 56: 7612920, 57: 11419380, 59: 11419380, 60: 7612920, 62: 11419380, 63: 3806460},SvtEvioHeaderMultisampleErrorBitException/{54: 1},
+ 5378      10851      10851         45 SvtEvioHeaderApvReadErrorException/{64: 65106},SvtEvioHeaderApvBufferAddressException/{64: 11090, 65: 240, 51: 240, 52: 320, 53: 240, 54: 160, 55: 240, 56: 160, 57: 240, 59: 240, 60: 160, 62: 240, 63: 80},SvtEvioHeaderSyncErrorException/{64: 10802},
+ 5380      72291      72291        191 SvtEvioHeaderApvFrameCountException/{54: 361455},SvtEvioHeaderApvBufferAddressException/{54: 361455},SvtEvioHeaderSyncErrorException/{54: 72291},
+ 5382      83906      83906         46 SvtEvioHeaderApvFrameCountException/{54: 419530},SvtEvioHeaderApvBufferAddressException/{54: 419530},SvtEvioHeaderApvReadErrorException/{54: 1},SvtEvioHeaderSyncErrorException/{54: 83906},SvtEvioHeaderMultisampleErrorBitException/{54: 1},
+ 5383     212529     212529         61 SvtEvioHeaderApvFrameCountException/{54: 1062645},SvtEvioHeaderApvBufferAddressException/{54: 1062645},SvtEvioHeaderSyncErrorException/{54: 212529},
+ 5385      91487      91487         32 SvtEvioHeaderApvFrameCountException/{54: 457435},SvtEvioHeaderApvBufferAddressException/{54: 457435},SvtEvioHeaderSyncErrorException/{54: 91487},
+ 5407      22044      22044         56 SvtEvioHeaderApvFrameCountException/{54: 110220},SvtEvioHeaderApvBufferAddressException/{54: 110220},SvtEvioHeaderSyncErrorException/{54: 22044},
+ 5409     197383     197383          7 SvtEvioHeaderApvReadErrorException/{64: 23685960, 65: 17764470, 51: 17764470, 52: 23685960, 53: 17764470, 54: 11842980, 55: 17764470, 56: 11842980, 57: 17764470, 59: 17764470, 60: 11842980, 62: 17764470, 63: 5921490},
+ 5410      57263      57263        207 SvtEvioHeaderApvFrameCountException/{54: 286315},SvtEvioHeaderApvBufferAddressException/{54: 286315},SvtEvioHeaderSyncErrorException/{54: 57263},
+ 5559        772        772        560 SvtEvioHeaderApvFrameCountException/{54: 3860},SvtEvioHeaderApvBufferAddressException/{54: 3860},SvtEvioHeaderSyncErrorException/{54: 772},
+ 5569      14886      14886        169 SvtEvioHeaderApvFrameCountException/{57: 74430},SvtEvioHeaderApvBufferAddressException/{57: 74430},SvtEvioHeaderSyncErrorException/{57: 14886},
+ 5575     191473     191473        392 SvtEvioHeaderApvFrameCountException/{56: 1914730, 57: 1914730, 62: 1914730},
+ 5576     192784     192784        174 SvtEvioHeaderApvFrameCountException/{56: 1927840, 57: 1927840, 62: 1927840, 54: 963920},SvtEvioHeaderApvBufferAddressException/{54: 963920},SvtEvioHeaderSyncErrorException/{54: 192784},
+ 5577      66911      66911        421 SvtEvioHeaderApvFrameCountException/{56: 669110, 57: 669110, 62: 669110},
+ 5578     201933     201933        435 SvtEvioHeaderApvFrameCountException/{56: 2019330, 57: 2019330, 62: 2019330},
+ 5579     126163     126163        153 SvtEvioHeaderApvFrameCountException/{56: 1261630, 57: 1261630, 62: 1261630},
+ 5610     116133     116133        153 SvtEvioHeaderApvFrameCountException/{54: 580666},SvtEvioHeaderApvBufferAddressException/{54: 580665},SvtEvioHeaderApvReadErrorException/{54: 1},SvtEvioHeaderSyncErrorException/{54: 116133},SvtEvioHeaderMultisampleErrorBitException/{54: 1},
+ 5639     143050     143050         20 SvtEvioHeaderApvFrameCountException/{54: 2},SvtEvioHeaderApvBufferAddressException/{54: 1},SvtEvioHeaderApvReadErrorException/{64: 17166000, 65: 12874500, 51: 12874500, 52: 17166000, 53: 12874500, 54: 8583000, 55: 12874500, 56: 8583000, 57: 12874500, 59: 12874500, 60: 8583000, 62: 12874500, 63: 4291500},SvtEvioHeaderMultisampleErrorBitException/{54: 1},
+ 5640     218691     218691         38 SvtEvioHeaderApvReadErrorException/{64: 26242920, 65: 19682190, 51: 19682190, 52: 26242920, 53: 19682190, 54: 13121460, 55: 19682190, 56: 13121460, 57: 19682190, 59: 19682190, 60: 13121460, 62: 19682190, 63: 6560730},
+ 5641     202056     202056          3 SvtEvioHeaderApvReadErrorException/{64: 24246720, 65: 18185040, 51: 18185040, 52: 24246720, 53: 18185040, 54: 12123360, 55: 18185040, 56: 12123360, 57: 18185040, 59: 18185040, 60: 12123360, 62: 18185040, 63: 6061680},
+ 5697     157630     157630        117 SvtEvioHeaderApvFrameCountException/{54: 788150},SvtEvioHeaderApvBufferAddressException/{54: 788150},SvtEvioHeaderSyncErrorException/{54: 157630},
+ 5722     181180     181180         37 SvtEvioHeaderApvFrameCountException/{54: 2},SvtEvioHeaderApvBufferAddressException/{54: 1},SvtEvioHeaderApvReadErrorException/{64: 21741600, 65: 16306200, 51: 16306200, 52: 21741600, 53: 16306200, 54: 10870800, 55: 16306200, 56: 10870800, 57: 16306200, 59: 16306200, 60: 10870800, 62: 16306200, 63: 5435400},SvtEvioHeaderMultisampleErrorBitException/{54: 1},
+ 5725     242968     242968        359 SvtEvioHeaderApvFrameCountException/{54: 1214840},SvtEvioHeaderApvBufferAddressException/{54: 1214840},SvtEvioHeaderSyncErrorException/{54: 242968},
+ 5747      67691      67691         15 SvtEvioHeaderApvReadErrorException/{64: 8122920, 65: 6092190, 51: 6092190, 52: 8122920, 53: 6092190, 54: 4061460, 55: 6092190, 56: 4061460, 57: 6092190, 59: 6092190, 60: 4061460, 62: 6092190, 63: 2030730},
+ 5748     176766     176766          5 SvtEvioHeaderApvFrameCountException/{52: 2, 54: 1},SvtEvioHeaderApvBufferAddressException/{52: 1, 54: 1},SvtEvioHeaderApvReadErrorException/{64: 21211920, 65: 15908940, 51: 15908940, 52: 21211920, 53: 15908940, 54: 10605960, 55: 15908940, 56: 10605960, 57: 15908940, 59: 15908940, 60: 10605960, 62: 15908940, 63: 5302980},SvtEvioHeaderMultisampleErrorBitException/{52: 1, 54: 1},
+ 5749     168858     168858         17 SvtEvioHeaderApvReadErrorException/{64: 20262960, 65: 15197220, 51: 15197220, 52: 20262960, 53: 15197220, 54: 10131480, 55: 15197220, 56: 10131480, 57: 15197220, 59: 15197220, 60: 10131480, 62: 15197220, 63: 5065740},
+ 5768     190643     190643        441 SvtEvioHeaderApvFrameCountException/{57: 953215},SvtEvioHeaderApvBufferAddressException/{57: 953215},SvtEvioHeaderSyncErrorException/{57: 190643},
+ 5788      29024      29024          1 SvtEvioHeaderApvReadErrorException/{64: 3482880, 65: 2612160, 51: 2612160, 52: 3482880, 53: 2612160, 54: 1741440, 55: 2612160, 56: 1741440, 57: 2612160, 59: 2612160, 60: 1741440, 62: 2612160, 63: 870720},
+ 5795      30176      30176        375 SvtEvioHeaderApvFrameCountException/{54: 150880},SvtEvioHeaderApvBufferAddressException/{54: 150880},SvtEvioHeaderSyncErrorException/{54: 30176},
+
+Runs to stage more files to find lock point:  65
+  run evioFileId logfile
+ 5034         21 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005034.evio.21-headerAnaLast/hps_005034.evio.21.log.1
+ 5039         36 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005039.evio.36-linkerrorfailed/hps_005039.evio.36.log.1
+ 5138         15 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005138.evio.15-headerAnaLast/hps_005138.evio.15.log.1
+ 5148         32 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005148.evio.32-linkerrorfailed/hps_005148.evio.32.log.1
+ 5151        121 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005151.evio.121-headerAnaLast/hps_005151.evio.121.log.1
+ 5181         30 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005181.evio.30-linkerrorfailed/hps_005181.evio.30.log.1
+ 5182         12 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005182.evio.12-headerAnaLast/hps_005182.evio.12.log.1
+ 5183         33 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005183.evio.33-headerAnaLast/hps_005183.evio.33.log.1
+ 5184         16 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005184.evio.16-linkerrorfailed/hps_005184.evio.16.log.1
+ 5185         38 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005185.evio.38-headerAnaLast/hps_005185.evio.38.log.1
+ 5186        122 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005186.evio.122-headerAnaLast/hps_005186.evio.122.log.1
+ 5188         16 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005188.evio.16-headerAnaLast/hps_005188.evio.16.log.1
+ 5189         69 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005189.evio.69-linkerrorfailed/hps_005189.evio.69.log.1
+ 5190          4 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005190.evio.4-headerAnaLast/hps_005190.evio.4.log.1
+ 5191          1 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005191.evio.1-headerAnaLast/hps_005191.evio.1.log.1
+ 5192         14 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005192.evio.14-headerAnaLast/hps_005192.evio.14.log.1
+ 5193         25 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005193.evio.25-headerAnaLast/hps_005193.evio.25.log.1
+ 5195          2 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005195.evio.2-linkerrorfailed/hps_005195.evio.2.log.1
+ 5196         10 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005196.evio.10-headerAnaLast/hps_005196.evio.10.log.1
+ 5197         17 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005197.evio.17-linkerrorfailed/hps_005197.evio.17.log.1
+ 5198         14 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005198.evio.14-headerAnaLast/hps_005198.evio.14.log.1
+ 5218         26 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005218.evio.26-headerAnaLast/hps_005218.evio.26.log.1
+ 5219          9 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005219.evio.9-headerAnaLast/hps_005219.evio.9.log.1
+ 5221          5 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005221.evio.5-headerAnaLast/hps_005221.evio.5.log.1
+ 5222         50 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005222.evio.50-headerAnaLast/hps_005222.evio.50.log.1
+ 5228         46 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005228.evio.46-headerAnaLast/hps_005228.evio.46.log.1
+ 5229         13 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005229.evio.13-headerAnaLast/hps_005229.evio.13.log.1
+ 5233          9 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005233.evio.9-headerAnaLast/hps_005233.evio.9.log.1
+ 5237         96 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005237.evio.96-linkerrorfailed/hps_005237.evio.96.log.1
+ 5253         20 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005253.evio.20-linkerrorfailed/hps_005253.evio.20.log.1
+ 5265        130 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005265.evio.130-headerAnaLast/hps_005265.evio.130.log.1
+ 5305         76 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005305.evio.76-headerAnaLast/hps_005305.evio.76.log.1
+ 5309          8 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005309.evio.8-headerAnaLast/hps_005309.evio.8.log.1
+ 5310        190 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005310.evio.190-headerAnaLast/hps_005310.evio.190.log.1
+ 5347         30 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005347.evio.30-headerAnaLast/hps_005347.evio.30.log.1
+ 5351        173 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005351.evio.173-headerAnaLast/hps_005351.evio.173.log.1
+ 5375         31 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005375.evio.31-headerAnaLast/hps_005375.evio.31.log.1
+ 5378         45 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005378.evio.45-headerAnaLast/hps_005378.evio.45.log.1
+ 5380        191 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005380.evio.191-headerAnaLast/hps_005380.evio.191.log.1
+ 5382         46 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005382.evio.46-headerAnaLast/hps_005382.evio.46.log.1
+ 5383         61 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005383.evio.61-linkerrorfailed/hps_005383.evio.61.log.1
+ 5385         32 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005385.evio.32-headerAnaLast/hps_005385.evio.32.log.1
+ 5407         56 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005407.evio.56-headerAnaLast/hps_005407.evio.56.log.1
+ 5409          7 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005409.evio.7-headerAnaLast/hps_005409.evio.7.log.1
+ 5410        207 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005410.evio.207-headerAnaLast/hps_005410.evio.207.log.1
+ 5559        560 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005559.evio.560-headerAnaLast/hps_005559.evio.560.log.1
+ 5569        169 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005569.evio.169-headerAnaLast/hps_005569.evio.169.log.1
+ 5575        392 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005575.evio.392-headerAnaLast/hps_005575.evio.392.log.1
+ 5576        174 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005576.evio.174-headerAnaLast/hps_005576.evio.174.log.1
+ 5577        421 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005577.evio.421-headerAnaLast/hps_005577.evio.421.log.1
+ 5578        435 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005578.evio.435-headerAnaLast/hps_005578.evio.435.log.1
+ 5579        153 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005579.evio.153-headerAnaLast/hps_005579.evio.153.log.1
+ 5610        153 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005610.evio.153-headerAnaLast/hps_005610.evio.153.log.1
+ 5639         20 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005639.evio.20-linkerrorfailed/hps_005639.evio.20.log.1
+ 5640         38 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005640.evio.38-linkerrorfailed/hps_005640.evio.38.log.1
+ 5641          3 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005641.evio.3-headerAnaLast/hps_005641.evio.3.log.1
+ 5697        117 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005697.evio.117-headerAnaLast/hps_005697.evio.117.log.1
+ 5722         37 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005722.evio.37-headerAnaLast/hps_005722.evio.37.log.1
+ 5725        359 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005725.evio.359-headerAnaLast/hps_005725.evio.359.log.1
+ 5747         15 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005747.evio.15-headerAnaLast/hps_005747.evio.15.log.1
+ 5748          5 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005748.evio.5-headerAnaLast/hps_005748.evio.5.log.1
+ 5749         17 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005749.evio.17-linkerrorfailed/hps_005749.evio.17.log.1
+ 5768        441 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005768.evio.441-linkerrorfailed/hps_005768.evio.441.log.1
+ 5788          1 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005788.evio.1-headerAnaLast/hps_005788.evio.1.log.1
+ 5795        375 /nfs/slac/g/hps2/phansson/software/batch/output/headerAnalysis/svtHeaderAnaLastFile/data/hps_005795.evio.375-headerAnaLast/hps_005795.evio.375.log.1
+
+Run logs w/ lock happening during this log:  7
+  run    nEvents nBadEvents fractionBad     Errors
+ 5194      69570      69570   1.000000 SvtEvioHeaderApvFrameCountException,
+ 5236     231430     231430   1.000000 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,
+ 5550     241893      13521   0.055897 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderSyncErrorException,
+ 5726     130494      51474   0.394455 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderApvReadErrorException,SvtEvioHeaderMultisampleErrorBitException,SvtEvioHeaderSyncErrorException,
+ 5733     194263       5897   0.030356 SvtEvioHeaderApvFrameCountException,SvtEvioHeaderApvBufferAddressException,SvtEvioHeaderSyncErrorException,
+ 5753     132120     132120   1.000000 SvtEvioHeaderApvReadErrorException,
+ 5789     116620     116620   1.000000 SvtEvioHeaderApvReadErrorException,
+Total    1116390     620632   0.555928
