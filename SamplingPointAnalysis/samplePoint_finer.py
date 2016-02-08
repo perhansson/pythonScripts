@@ -10,6 +10,9 @@ class Sync(object):
         self.F = F
         self.H = H
         self.syncmap = syncmap
+        self.peakmap = None
+        self.basemap = None
+    
 
 
 
@@ -32,8 +35,11 @@ for line in f.readlines():
     H = int(m.group(1))
 
     print 'v \"', v, '\"'
+
+    # find sync detected words
+    v_sd = v.split('SyncDetected')[1].split('SyncPeak')[0]
     m = {}
-    for pairs in v.split(','):
+    for pairs in v_sd.split(','):
         p = pairs
         if len(p.split()) <2:
             print 'skip \"',p,'\"'
@@ -45,9 +51,71 @@ for line in f.readlines():
         print 'p ', p_str
         phase = int(p_str)
         sync = int(s_str,0)
-        m[phase] = sync
+        m[phase] = sync    
+
+    sync_obj = Sync(F,H,m)
+
+
+    # find sync peak words
+    v_p = v.split('SyncPeak')[1].split('SyncBase')[0]
+    m_peak = {}
+    for pairs in v_p.split(','):
+        p = pairs
+        if len(p.split()) <2:
+            print 'skip \"',p,'\"'
+            continue
+        p_str = p.split()[0].replace(' ','')
+        s_str = p.split()[1].replace(' ','')
+        if not p_str:
+            continue
+        print 'p ', p_str
+        phase = int(p_str)
+        sync = int(s_str,0)
+        if phase not in m_peak:
+            m_peak[phase] = []
+        m_peak[phase].append(sync)
+    m_peak_ave = {}
+    for p,vals in m_peak.iteritems():        
+        v_ave = 0.
+        for val in vals:
+            v_ave += val
+        v_ave = v_ave/len(vals)
+        m_peak_ave[p] = v_ave
     
-    syncs.append( Sync(F,H,m) )
+    sync_obj.peakmap = m_peak_ave
+
+    # find sync base words
+    v_p = v.split('SyncBase')[1]
+    m_base = {}
+    for pairs in v_p.split(','):
+        p = pairs
+        if len(p.split()) <2:
+            print 'skip \"',p,'\"'
+            continue
+        p_str = p.split()[0].replace(' ','')
+        s_str = p.split()[1].replace(' ','')
+        if not p_str:
+            continue
+        print 'p ', p_str
+        phase = int(p_str)
+        sync = int(s_str,0)
+        if phase not in m_base:
+            m_base[phase] = []
+        m_base[phase].append(sync)
+    m_base_ave = {}
+    for p,vals in m_base.iteritems():        
+        v_ave = 0.
+        for v in vals:
+            v_ave += v
+        v_ave = v_ave/len(vals)
+        m_base_ave[p] = v_ave
+    
+    sync_obj.basemap = m_base_ave
+
+    
+    syncs.append( sync_obj )
+    
+    
 
 print 'Got ', len(syncs), ' hybrids'
 
@@ -81,10 +149,10 @@ for s in syncs:
 for F in h_all.keys():
     c = TCanvas('c_' + str(F), 'c_' + str(F), 10,10,700,500)    
     c.SetTheta(90);
-    c.SetPhi(90);   
+    c.SetPhi(0);   
     h_all[F].SetMarkerStyle(20)
     h_all[F].Draw('pcolz')
-    c.SaveAs('samplepoint_scan_feb_' + str(F) + '.png')
+    c.SaveAs('samplepoint_finer_scan_feb_' + str(F) + '.png')
     c_all.append(c)
     ans = raw_input('continue?')
 
